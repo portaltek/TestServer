@@ -1,4 +1,5 @@
 package org.portalapps.webapp.dao;
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public abstract class AbstracJpaDao<E>  implements IDao<E>{
+public abstract class AbstracJpaDao<E extends Serializable>  implements IDao<E>{
 
 
 	@PersistenceContext(unitName = "hrPU")
