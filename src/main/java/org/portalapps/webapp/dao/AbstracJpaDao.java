@@ -10,10 +10,6 @@ import javax.persistence.Query;
 
 import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.transaction.annotation.Transactional;
 
 
 public abstract class AbstracJpaDao<E extends Serializable, ID>  implements IDao<E, ID>{
@@ -21,10 +17,6 @@ public abstract class AbstracJpaDao<E extends Serializable, ID>  implements IDao
 
 	@PersistenceContext(unitName = "hrPU")
 	protected EntityManager em ;
-	
-//	@Autowired
-//	@Qualifier("hrEntityManagerFactory")
-//	protected LocalContainerEntityManagerFactoryBean hrEmf ;
 	
 	protected Class<E> clazz;
 	public enum ACTION {
@@ -78,7 +70,6 @@ public abstract class AbstracJpaDao<E extends Serializable, ID>  implements IDao
 
 	@SuppressWarnings("unchecked")
 	public List<E> findAll() {
-		//		printHello();
 		String q = "from " + clazz.getName();
 		List<E> resultList = em
 				.createQuery(q)

@@ -7,17 +7,13 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-//@EnableAspectJAutoProxy
 @EnableCaching
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {
@@ -44,16 +40,6 @@ public class ConfigHr extends ConfigJpaHibernate {
 		return super.entityManagerFactory();
 	}
 
-
-
-	//	@Bean
-	//	public PlatformTransactionManager transactionManager(){
-	//		JpaTransactionManager transactionManager = new JpaTransactionManager();
-	//		transactionManager.setEntityManagerFactory(
-	//				super.entityManagerFactory().getObject() );
-	//		return transactionManager;
-	//	}	
-
 	@Bean
 	public JpaTransactionManager transactionManager(EntityManagerFactory emf){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -70,10 +56,6 @@ public class ConfigHr extends ConfigJpaHibernate {
 	public HibernateExceptionTranslator hibernateExceptionTranslator() {
 		return new HibernateExceptionTranslator(); 
 	} 
-	
-	//	@Bean
-	//	public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-	//		return new PersistenceExceptionTranslationPostProcessor();
-	//	}	
+
 
 }

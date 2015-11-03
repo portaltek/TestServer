@@ -30,6 +30,18 @@ countryApp.service('CountryService', ['$http', '$q', function($http, $q){
 					}
 			);
 		},
+		update: function(country){
+			return $http.put(url, country)
+			.then(
+					function(response){
+						return response.data;
+					}, 
+					function(errResponse){
+						console.error('Error while creating user');
+						return $q.reject(errResponse);
+					}
+			);
+		},		
 
 	};
 

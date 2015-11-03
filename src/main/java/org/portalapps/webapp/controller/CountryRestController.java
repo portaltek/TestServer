@@ -4,13 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Hibernate;
 import org.portalapps.webapp.dao.hr.CountryJpaDao;
 import org.portalapps.webapp.dao.hr.RegionJpaDao;
 import org.portalapps.webapp.dto.hr.Country;
-import org.portalapps.webapp.dto.hr.Region;
-import org.portalapps.webapp.dto.hr.User;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import net.sf.json.JSONObject;
 
 
 @RestController
+@Transactional
 @RequestMapping(value = "/country/")
 public class CountryRestController {
 
@@ -46,18 +42,34 @@ public class CountryRestController {
 	}
 
 	@ResponseBody
-	@Transactional
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<String> createUser(
 			@RequestBody Country country) {
-		HttpHeaders headers = new HttpHeaders();
+		JSONObject json = new JSONObject();
 		try {
 			countriesJpaDao.insert(country);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<String>(json.toString(), HttpStatus.CREATED);
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateUser(
+			@RequestBody Country country) {
+		JSONObject json = new JSONObject();
+		try {
+			Country currentUser = countriesJpaDao.findById(country.getCountryId());
+			if (currentUser==null) {
+				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+			}
+			countriesJpaDao.update(country);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
+	}
 
 }

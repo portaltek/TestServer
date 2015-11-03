@@ -2,8 +2,6 @@ package org.portalapps.webapp.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 
 public interface IDao<E, ID> {
 	void insert(E e);

@@ -26,8 +26,10 @@
 
 			<!-- HEADER -->
 			<div class="panel-heading">
-				<span class="lead">COUNTRY LIST</span> <span class="lead">
-					<button type="button" ng-click="ctrl.edit(u.id)"
+				<span class="lead">Country List</span> <span class="lead">
+					<button type="button" 
+					   ng-click="ctrl.showInsertForm(); toggleModal();"
+					   
 						class="btn btn-primary custom-width">+</button>
 				</span>
 			</div>
@@ -35,7 +37,7 @@
 
 
 			<!-- FORM -->
-			<div class=" panel panel-default">
+			<modal class=" panel panel-default" title="Login form" visible="showModal">
 
 				<!-- FORM HEAD -->
 				<div class="panel-heading">
@@ -47,7 +49,7 @@
 
 					<form ng-submit="ctrl.submit()" name="countryForm"
 						class="form-horizontal">
-						<input type="hidden" ng-model="ctrl.user.id" />
+						<input type="hidden" ng-model="ctrl.country.countryId" />
 
 
 
@@ -108,25 +110,46 @@
 							<div class="form-actions ">
 								<div class="col-md-2 "></div>
 								<div class="col-md-5 ">
-									<input type="submit"
-										value="{{!ctrl.country.countryId ? 'Add' : 'Add'}}"
-										class="btn btn-primary btn-sm right" ng-disabled="countryForm.$invalid">
+                                    <button type="button" 
+                                        class="btn btn-primary btn-sm right" 
+                                        ng-disabled="false"
+                                        ng-click="ctrl.reset()">
+                                        Reset 
+                                    </button>   
+									<button type="button" 
+										class="btn btn-primary btn-sm right" 
+										ng-click="ctrl.insert()"
+										ng-disabled="false"
+										ng-show="ctrl.showBtnInsert">
+										Insert 
+									</button>
+                                    <button type="button" 
+                                        class="btn btn-primary btn-sm right" 
+                                        ng-click="ctrl.update()"
+                                        ng-disabled="false"
+                                        ng-show="ctrl.showBtnUpdate">
+                                        Update 
+                                    </button>
+                                    <button type="button" 
+                                        class="btn btn-primary btn-sm right" 
+                                        ng-click="ctrl.delete()"
+                                        ng-disabled="false"
+                                        ng-show="ctrl.showBtnDelete">
+                                        Delete 
+                                    </button>                                    
 								
-									<button type="button" ng-click="ctrl.reset()"
-										class="btn btn-warning btn-sm right" ng-disabled="countryForm.$pristine">Reset
-										Form</button>
 								</div>
 							</div>
 						</div>
 					</form>
 				</div>
-			</div>
+			</modal>
 
 
 			<!-- TABLA -->
-			<div class="panel-heading">
-				<span class="lead">Country LIST</span>
-			</div>
+<!-- 			<div class="panel-heading"> -->
+<!-- 				<span class="lead">Country LIST</span> -->
+<!-- 			</div> -->
 			<div class="tablecontainer">
 
 				<table class="table table-hover">
@@ -145,9 +168,9 @@
 							<td><span ng-bind="c.region.regionName"></span></td>
 
 							<td>
-								<button type="button" ng-click="ctrl.edit(u.id)"
+								<button type="button" ng-click="ctrl.showUpdateForm(c.countryId)"
 									class="btn btn-success custom-width">Edit</button>
-								<button type="button" ng-click="ctrl.remove(u.id)"
+								<button type="button" ng-click="ctrl.showDeleteForm(c.countryId)"
 									class="btn btn-danger custom-width">Remove</button>
 							</td>
 						</tr>
