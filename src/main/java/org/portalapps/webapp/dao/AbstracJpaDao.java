@@ -16,13 +16,15 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public abstract class AbstracJpaDao<E extends Serializable>  implements IDao<E>{
+public abstract class AbstracJpaDao<E extends Serializable, ID>  implements IDao<E, ID>{
 
 
 	@PersistenceContext(unitName = "hrPU")
 	protected EntityManager em ;
 	
-
+//	@Autowired
+//	@Qualifier("hrEntityManagerFactory")
+//	protected LocalContainerEntityManagerFactoryBean hrEmf ;
 	
 	protected Class<E> clazz;
 	public enum ACTION {
@@ -44,14 +46,7 @@ public abstract class AbstracJpaDao<E extends Serializable>  implements IDao<E>{
 
 
 	public void insert(E e) {
-//		em.getTransaction().begin();
-//		String s = hrEntityManagerFactory.getPersistenceUnitName();
-//		System.out.println(s);
-		String t = em.toString();
-		System.out.println(t);
-		em.merge(e);		
-//		em.getTransaction().commit();
-//		em.close();				
+		em.persist(e);		
 	}
 
 	public boolean exist(E e){
@@ -70,18 +65,15 @@ public abstract class AbstracJpaDao<E extends Serializable>  implements IDao<E>{
 	}
 
 	public void update(E e) {
-		//		printHello();
-
+		em.merge(e);
 	}
 
 	public void delete(E e) {
-		//		printHello();
-
+		em.remove(e);
 	}
 
-	public E findBy(E e) {
-		//		printHello();
-		return em.find(clazz,e);
+	public E findById(ID id) {
+		return em.find(clazz, id);
 	}
 
 	@SuppressWarnings("unchecked")

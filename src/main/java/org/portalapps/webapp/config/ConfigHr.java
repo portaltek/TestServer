@@ -55,7 +55,7 @@ public class ConfigHr extends ConfigJpaHibernate {
 	//	}	
 
 	@Bean
-	public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+	public JpaTransactionManager transactionManager(EntityManagerFactory emf){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
 

@@ -3,8 +3,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.portalapps.webapp.dao.hr.CountriesJpaDao;
-import org.portalapps.webapp.dao.hr.RegionsJpaDao;
+import org.portalapps.webapp.dao.hr.CountryJpaDao;
+import org.portalapps.webapp.dao.hr.RegionJpaDao;
 import org.portalapps.webapp.dto.hr.Country;
 import org.portalapps.webapp.dto.hr.Region;
 import org.springframework.stereotype.Controller;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //@RequestMapping("/")
 public class DefaultController {
 	
-	@Resource private CountriesJpaDao countriesJpaDao;	
-	@Resource private RegionsJpaDao regionsJpaDao;
+	@Resource private CountryJpaDao countriesJpaDao;	
+	@Resource private RegionJpaDao regionsJpaDao;
 //	@EJB private CountriesEjbDao countriesEjbDao;
 	 
 //	@RequestMapping(value={ "/", "/index", "/views/index.jsp"})
@@ -51,7 +51,7 @@ public class DefaultController {
 		System.out.println("********* Regions ***********");
 		List<Region> regionList = regionsJpaDao.findAll();
 		for (Region c: regionList){
-			RegionsJpaDao.initializeAndUnproxy(c);
+			RegionJpaDao.initializeAndUnproxy(c);
 			String m = "=>" + c.getRegionId() 
 					+ ", " + c.getRegionName()
 //					+ ", => " + c.getCountriesList().size()

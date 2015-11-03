@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 
-public interface IDao<E> {
+public interface IDao<E, ID> {
 	void insert(E e);
 	void update(E e);
 	void delete(E e);
-	E findBy(E e);
+	E findById(ID id);
 	List<E> findAll();
 }

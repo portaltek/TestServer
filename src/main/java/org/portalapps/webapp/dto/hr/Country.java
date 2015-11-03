@@ -14,12 +14,12 @@ import javax.persistence.Table;
 public class Country implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@Id 
 	@Column(name = "COUNTRY_ID", unique = true, nullable = false)
 	private String countryId;
 	@Column(name = "COUNTRY_NAME", unique = true, nullable = false, length = 20)
 	private String countryName;
-	@ManyToOne
+	@ManyToOne(targetEntity=Region.class)
 	@JoinColumn(name="REGION_ID")
 	private Region region;
 

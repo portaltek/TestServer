@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Region implements Serializable {
 	 private static final long serialVersionUID = 1L;
 	 
-	    @Id @GeneratedValue
+	    @Id 
 	    @Column(name = "REGION_ID", unique = true, nullable = false)
 	    private int regionId;
 	    @Column(name = "REGION_NAME", unique = true, nullable = false, length = 20)

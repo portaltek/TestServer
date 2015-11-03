@@ -10,7 +10,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
 
 
-public class  AbstracEjbDao<E>  implements IDao<E>{
+public class  AbstracEjbDao<E, ID>  implements IDao<E, ID>{
 	@PersistenceContext(unitName = "hrPU")
 	protected EntityManager em;
 	protected Class<E> clazz;
@@ -47,7 +47,7 @@ public class  AbstracEjbDao<E>  implements IDao<E>{
 		
 	}
 
-	public E findBy(E e) {
+	public E findById(ID id) {
 		printHello();
 		return null;
 	}
