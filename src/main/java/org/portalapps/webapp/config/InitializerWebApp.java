@@ -3,12 +3,12 @@ package org.portalapps.webapp.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer  {
+public class InitializerWebApp extends AbstractAnnotationConfigDispatcherServletInitializer  {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 				 return new Class[] {
-//						 AppControllerConfig.class 
+						 ConfigWebMvc.class 
 						 };
 //		return null;
 	}
@@ -16,7 +16,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { 
-				AppControllerConfig.class 
+//				ConfigWebMvc.class 
 				};
 //		return null;
 	}

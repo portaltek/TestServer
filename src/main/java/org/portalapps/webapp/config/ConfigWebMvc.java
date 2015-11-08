@@ -1,5 +1,6 @@
 package org.portalapps.webapp.config;
 
+import org.portalapps.webapp.config.impl.ConfigHr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +25,10 @@ import org.springframework.web.servlet.view.JstlView;
 		"org.portalapps.webapp.config"
 })
 @Import({
-	ConfigHr.class
+	ConfigHr.class,
+//	ConfigSecurity.class,
 	})
-public class AppControllerConfig extends WebMvcConfigurerAdapter{
+public class ConfigWebMvc extends WebMvcConfigurerAdapter{
 	
 	@Autowired protected  Prop prop;
 	

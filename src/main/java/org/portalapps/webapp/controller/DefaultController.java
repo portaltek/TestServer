@@ -33,11 +33,11 @@ public class DefaultController {
         return "UserManagement";
     }
 	
-	@RequestMapping(value={ "/"})
-    public String index() {
-		return "index"; 
-    }
-	
+//	@RequestMapping(value={ "/"})
+//    public String index() {
+//		return "index"; 
+//    }
+//	
 	
 	
 	public void printAll(List<Country> list){
@@ -61,9 +61,9 @@ public class DefaultController {
 		System.out.println("MAIN: " + regionList.size());
 	}
 	
-	@RequestMapping(value={  "/index2", "views/index2", "/views/index2.jsp"})
-	public String hello2(){
-		System.out.println("hello2");
-		return "index2";
-	}	
+//	@RequestMapping(value={  "/index2", "views/index2", "/views/index2.jsp"})
+//	public String hello2(){
+//		System.out.println("hello2");
+//		return "index2";
+//	}	
 }

@@ -18,10 +18,10 @@
     
 
 
+
     <hr><hr>
     Dear <strong>${user}</strong>, Welcome to Admin Page.
     <a href="<c:url value="/logout" />">Logout</a>
-    
     <div>
         <sec:authorize access="hasRole('ADMIN')">
             <label><a href="#">Edit this page</a> | This part is visible only to ADMIN</label>

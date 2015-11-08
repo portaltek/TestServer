@@ -5,17 +5,14 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
 
 
-public abstract class AbstracJpaDao<E extends Serializable, ID>  implements IDao<E, ID>{
-
-
-	@PersistenceContext(unitName = "hrPU")
+public abstract class JpaHibernate<E extends Serializable, ID>  implements IDao<E, ID>{
+/*
 	protected EntityManager em ;
 	
 	protected Class<E> clazz;
@@ -89,5 +86,5 @@ public abstract class AbstracJpaDao<E extends Serializable, ID>  implements IDao
 			.getImplementation();
 		return entity;
 	}
-
+*/
 }

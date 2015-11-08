@@ -1,7 +1,8 @@
-package org.portalapps.webapp.config;
+package org.portalapps.webapp.config.impl;
 
 import javax.persistence.EntityManagerFactory;
 
+import org.portalapps.webapp.config.ConfigJpaHibernate;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableCaching
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {
-		"org.portalapps.webapp"
+		"org.portalapps.webapp.dao.hr"
 })
 public class ConfigHr extends ConfigJpaHibernate {
 
