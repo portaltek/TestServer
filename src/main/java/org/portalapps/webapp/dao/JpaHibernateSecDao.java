@@ -3,9 +3,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 
-public abstract class JpaHibernateHrDao<E, ID> extends JpaHibernate<E, ID>{
+public abstract class JpaHibernateSecDao<E, ID> extends JpaHibernate<E, ID>{
 
-	@PersistenceContext(unitName = "hrPU")
+	@PersistenceContext(unitName = "secPU")
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}

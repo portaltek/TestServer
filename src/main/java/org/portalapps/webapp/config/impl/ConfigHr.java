@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -17,9 +18,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableCaching
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {
+@EnableJpaRepositories(
+		basePackages = {
 		"org.portalapps.webapp.dao.hr"
-})
+		})
+//,		entityManagerFactoryRef = "hrEntityManagerFactory", 
+//		transactionManagerRef ="hrEntityTransactionManager")
 public class ConfigHr extends ConfigJpaHibernate {
 
 	{
@@ -36,13 +40,14 @@ public class ConfigHr extends ConfigJpaHibernate {
 		hibernatePersistenceUnitName 	= "hibernate.hr.persistenceUnitName";
 	}
 
+	@Primary
 	@Bean(name="hrEntityManagerFactory")    
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory()	{
+	public LocalContainerEntityManagerFactoryBean hrEntityManagerFactory()	{
 		return super.entityManagerFactory();
 	}
 
-	@Bean
-	public JpaTransactionManager transactionManager(EntityManagerFactory emf){
+	@Bean(name="hrEntityTransactionManager")   
+	public JpaTransactionManager hrEntityTransactionManager(EntityManagerFactory emf){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
 

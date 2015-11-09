@@ -1,5 +1,4 @@
 package org.portalapps.webapp.dao;
-import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -11,8 +10,8 @@ import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
 
 
-public abstract class JpaHibernate<E extends Serializable, ID>  implements IDao<E, ID>{
-/*
+public abstract class JpaHibernate<E, ID>  implements IDao<E, ID>{
+
 	protected EntityManager em ;
 	
 	protected Class<E> clazz;
@@ -86,5 +85,17 @@ public abstract class JpaHibernate<E extends Serializable, ID>  implements IDao<
 			.getImplementation();
 		return entity;
 	}
-*/
+
+
+	public EntityManager getEm() {
+		return em;
+	}
+
+
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+	
+	
+
 }

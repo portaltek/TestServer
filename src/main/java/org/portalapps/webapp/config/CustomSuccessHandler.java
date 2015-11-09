@@ -17,6 +17,11 @@ import org.springframework.stereotype.Component;
  
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
+	
+	private final String USER = "APP_USER";
+	private final String ADMIN = "APP_ADMIN";
+	private final String DBA = "APP_DBA";
+
  
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
      
@@ -43,12 +48,12 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         for (GrantedAuthority a : authorities) {
             roles.add(a.getAuthority());
         }
- 
-        if (isDba(roles)) {
+        
+        if (roles.contains(DBA)) {
             url = "/dba";
-        } else if (isAdmin(roles)) {
+        } else if (roles.contains(ADMIN)) {
             url = "/admin";
-        } else if (isUser(roles)) {
+        } else if (roles.contains(USER)) {
             url = "/user";
         } else {
             url="/accessDenied";
@@ -64,25 +69,6 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         return redirectStrategy;
     }
      
-    private boolean isUser(List<String> roles) {
-        if (roles.contains("ROLE_USER")) {
-            return true;
-        }
-        return false;
-    }
- 
-    private boolean isAdmin(List<String> roles) {
-        if (roles.contains("ROLE_ADMIN")) {
-            return true;
-        }
-        return false;
-    }
- 
-    private boolean isDba(List<String> roles) {
-        if (roles.contains("ROLE_DBA")) {
-            return true;
-        }
-        return false;
-    }
+   
  
 }

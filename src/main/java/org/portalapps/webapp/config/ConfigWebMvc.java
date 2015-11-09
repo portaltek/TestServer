@@ -1,6 +1,7 @@
 package org.portalapps.webapp.config;
 
 import org.portalapps.webapp.config.impl.ConfigHr;
+import org.portalapps.webapp.config.impl.ConfigSec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {
-		"org.portalapps.webapp.dto",
+//		"org.portalapps.webapp.dto",
 		"org.portalapps.webapp.dao", 
 		"org.portalapps.webapp.service",
 		
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.view.JstlView;
 })
 @Import({
 	ConfigHr.class,
+	ConfigSec.class,
 //	ConfigSecurity.class,
 	})
 public class ConfigWebMvc extends WebMvcConfigurerAdapter{

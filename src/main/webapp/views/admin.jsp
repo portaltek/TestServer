@@ -23,14 +23,14 @@
     Dear <strong>${user}</strong>, Welcome to Admin Page.
     <a href="<c:url value="/logout" />">Logout</a>
     <div>
-        <sec:authorize access="hasRole('ADMIN')">
+        <sec:authorize access="hasRole('APP_ADMIN')">
             <label><a href="#">Edit this page</a> | This part is visible only to ADMIN</label>
         </sec:authorize>
     </div>
  
     <br/>
     <div>
-        <sec:authorize access="hasRole('ADMIN') and hasRole('DBA')">
+        <sec:authorize access="hasRole('APP_ADMIN') and hasRole('APP_DBA')">
             <label><a href="#">Start backup</a> | This part is visible only to one who is both ADMIN & DBA</label>
         </sec:authorize>
     </div>    

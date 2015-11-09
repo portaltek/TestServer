@@ -1,7 +1,16 @@
 package org.portalapps.webapp.controller;
+import java.security.Principal;
+import java.util.List;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.portalapps.webapp.dao.hr.CountryJpaDao;
+import org.portalapps.webapp.dao.sec.SecUserDao;
+import org.portalapps.webapp.dto.hr.Country;
+import org.portalapps.webapp.dto.sec.SecUser;
+import org.portalapps.webapp.service.hr.sec.SecUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +25,26 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/")
 public class LoginController {
+	
+	@Resource CountryJpaDao dao;
+	@Resource SecUserDao secUserDao;
+	@Resource SecUserService secUserService;
+	
+	@RequestMapping(value = { "/newUser" }, method = RequestMethod.GET)
+	public ModelAndView newUser() {
+		
 
+
+		ModelAndView model = new ModelAndView();
+		model.addObject("user", getPrincipal());
+		model.addObject("title", "Spring Security Custom Login Form");
+		model.addObject("message", "This is welcome page!");
+		model.setViewName("admin");
+		return model;
+
+	}
+	
+	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 
@@ -24,7 +52,7 @@ public class LoginController {
 		model.addObject("user", getPrincipal());
 		model.addObject("title", "Spring Security Custom Login Form");
 		model.addObject("message", "This is welcome page!");
-		model.setViewName("user");
+		model.setViewName("admin");
 		return model;
 
 	}
@@ -38,6 +66,10 @@ public class LoginController {
 		model.addObject("message", "This is protected page!");
 		model.setViewName("admin");
 
+		SecUser user = new SecUser("TEST","TEST","TEST");
+		secUserService.insert(user);
+		System.out.println(user);
+		
 		return model;
 
 	}
@@ -92,8 +124,10 @@ public class LoginController {
 
 	private String getPrincipal(){
 		String userName = null;
+		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+		UserDetails p = (UserDetails) principal;
+		System.out.println(p.getAuthorities().size());
 		if (principal instanceof UserDetails) {
 			userName = ((UserDetails)principal).getUsername();
 		} else {
