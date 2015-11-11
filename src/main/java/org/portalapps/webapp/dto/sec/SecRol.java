@@ -20,6 +20,12 @@ public class SecRol implements Serializable {
 	@Column(name = "ROL_NAME", unique = false, nullable = false, length = 100)
 	private String rolName;
 	
+	public SecRol() {
+	}
+	public SecRol(String rolId, String rolName) {
+		this.rolId = rolId;
+		this.rolName = rolName;
+	}
 	public String getRolId() {
 		return rolId;
 	}

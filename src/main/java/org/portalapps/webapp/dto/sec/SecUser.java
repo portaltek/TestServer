@@ -33,9 +33,7 @@ public class SecUser implements Serializable {
 	private String email;
 	@Column(name = "STATE_ID", unique = false, nullable = false, length = 100)
 	private String stateId;	
-	//	@ManyToOne(targetEntity=Region.class)
-	//	@JoinColumn(name="REGION_ID")
-	//	private Region region;
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "SEC_USER_ROL", 
 	joinColumns = { @JoinColumn(name = "USER_ID") }, 
@@ -44,10 +42,8 @@ public class SecUser implements Serializable {
 
 
 	public SecUser() {
-		super();
 	}
 	public SecUser(String userId, String password, String firstName) {
-		super();
 		this.userId = userId;
 		this.password = password;
 		this.firstName = firstName;

@@ -9,46 +9,50 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "REGIONS", catalog = "HR")
 public class Region implements Serializable {
-	 private static final long serialVersionUID = 1L;
-	 
-	    @Id 
-	    @Column(name = "REGION_ID", unique = true, nullable = false)
-	    private int regionId;
-	    @Column(name = "REGION_NAME", unique = true, nullable = false, length = 20)
-	    private String regionName;
-	    
-//	    @OneToMany(mappedBy="region",fetch=FetchType.EAGER)
-//	    private List<Country> countryList;	    
-//	    
-	    
-	    public Region(){
-	    	
-	    }
+	private static final long serialVersionUID = 1L;
 
-		public int getRegionId() {
-			return regionId;
-		}
+	@Id 
+	@Column(name = "REGION_ID", unique = true, nullable = false)
+	private int regionId;
+	@Column(name = "REGION_NAME", unique = true, nullable = false, length = 20)
+	private String regionName;
 
-		public void setRegionId(int regionId) {
-			this.regionId = regionId;
-		}
+	//	    @OneToMany(mappedBy="region",fetch=FetchType.EAGER)
+	//	    private List<Country> countryList;	    
+	//	    
 
-		public String getRegionName() {
-			return regionName;
-		}
+	public Region(){	    	
+	}
 
-		public void setRegionName(String regionName) {
-			this.regionName = regionName;
-		}
+	public Region(int regionId, String regionName) {
+		this.regionId = regionId;
+		this.regionName = regionName;
+	}
 
-//		public List<Country> getCountryList() {
-//			return countryList;
-//		}
-//
-//		public void setCountriesList(List<Country> countryList) {
-//			this.countryList = countryList;
-//		}
-	    
-	
+	public int getRegionId() {
+		return regionId;
+	}
+
+	public void setRegionId(int regionId) {
+		this.regionId = regionId;
+	}
+
+	public String getRegionName() {
+		return regionName;
+	}
+
+	public void setRegionName(String regionName) {
+		this.regionName = regionName;
+	}
+
+	//		public List<Country> getCountryList() {
+	//			return countryList;
+	//		}
+	//
+	//		public void setCountriesList(List<Country> countryList) {
+	//			this.countryList = countryList;
+	//		}
+
+
 
 }

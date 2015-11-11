@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableCaching
 @EnableTransactionManagement
+//@EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableJpaRepositories(basePackages = {
 		"org.portalapps.webapp.dao.sec"
 })
@@ -39,21 +40,11 @@ public class ConfigSec extends ConfigJpaHibernate {
 	}
 
 	@Bean(name="secEntityTransactionManager")   
-	public JpaTransactionManager secEntityTransactionManager(EntityManagerFactory emf){
+	public JpaTransactionManager secEntityTransactionManager(){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		EntityManagerFactory emf = secEntityManagerFactory().getObject();
 		transactionManager.setEntityManagerFactory(emf);
-
 		return transactionManager;
 	}
-
-//	@Bean 
-//	public CacheManager cacheManager() { 
-//		return new ConcurrentMapCacheManager();
-//	} 
-//	@Bean 
-//	public HibernateExceptionTranslator hibernateExceptionTranslator() {
-//		return new HibernateExceptionTranslator(); 
-//	} 
-
-
+	
 }

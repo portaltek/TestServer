@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		basePackages = {
 		"org.portalapps.webapp.dao.hr"
 		})
-//,		entityManagerFactoryRef = "hrEntityManagerFactory", 
-//		transactionManagerRef ="hrEntityTransactionManager")
 public class ConfigHr extends ConfigJpaHibernate {
 
 	{
@@ -47,10 +45,10 @@ public class ConfigHr extends ConfigJpaHibernate {
 	}
 
 	@Bean(name="hrEntityTransactionManager")   
-	public JpaTransactionManager hrEntityTransactionManager(EntityManagerFactory emf){
+	public JpaTransactionManager hrEntityTransactionManager(){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		EntityManagerFactory emf = hrEntityManagerFactory().getObject();
 		transactionManager.setEntityManagerFactory(emf);
-
 		return transactionManager;
 	}
 

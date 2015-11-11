@@ -27,9 +27,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 			throws UsernameNotFoundException {
 		try {
 			SecUser user = dao.findById(id);
-			System.out.println(user);
+//			System.out.println(user);
 			if(user==null){
-				System.out.println("User not found");
+//				System.out.println("User not found");
 				throw new UsernameNotFoundException("Username not found");
 			}
 			return new User(user.getUserId(), user.getPassword(), 
@@ -48,7 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 			String rol =  secRol.getRolName(); //"ROLE_" +
 			authorities.add(new SimpleGrantedAuthority(rol));
 		}
-		System.out.println("authorities :"+authorities.toString());
+//		System.out.println("authorities :"+authorities.toString());
 		return authorities;
 	}
 
