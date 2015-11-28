@@ -23,8 +23,7 @@
 
 <script src="${lib}/jq/1.10.2/jquery.js"></script>
 <script src="${lib}/jqm/1.4.5/jquery.mobile.js"></script>
-
-
+<script src="${js}/default.js"></script>
 
 </head>
 
@@ -32,9 +31,10 @@
 
 	<div data-role="page" id="defaultPage">
 		<div data-role="header">
-			<a href="#"   style="display:none"></a>
+			<a href="#" style="display: none"></a>
 			<h1>APP NAME</h1>
-			<a href="#infoPanel" data-position="right"
+			<a  href="#infoPanel" data-position="right"
+				onmouseover="clickOnMouseOver(this)"
 				class="ui-btn ui-shadow ui-corner-all ui-icon-info ui-btn-icon-notext">Options</a>
 		</div>
 

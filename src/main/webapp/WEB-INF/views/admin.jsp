@@ -22,7 +22,7 @@
 
 <script src="${lib}/jq/1.10.2/jquery.js"></script>
 <script src="${lib}/jqm/1.4.5/jquery.mobile.js"></script>
-<meta http-equiv="X-Frame-Options" content="GOFORIT">
+<script src="${js}/default.js"></script>
 
 
 </head>
@@ -39,7 +39,7 @@
 		</div>
 
 		<div data-role="panel" id="options" data-display="overlay"
-			data-position="right">
+			data-position="right" >
 			<h2>Options</h2>
 			<p>Some text in the panel..</p>
 			<a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline">Close
@@ -48,12 +48,12 @@
 
 
 		<div data-role="header">
-			<a href="#menu"
-				class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext">Menu</a>
+			<a href="#menu" onmouseover="clickOnMouseOver(this);"
+				class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ">Menu</a>
 
 			<h1>Title : ${title}</h1>
-			<a href="#options"
-				class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext">Options</a>
+			<a href="#options" onmouseover="clickOnMouseOver(this)"
+				class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ">Options</a>
 		</div>
 		<div role="main" class="ui-content">
 			<h1>Message : ${message}</h1>
