@@ -1,0 +1,16 @@
+.ui-icon-myicon:after {
+	background-image: url("img/help.png");
+	background-size: 30px 30px;
+
+}
+/* Fallback */
+.ui-nosvg .ui-icon-myicon:after {
+	background-image: url("img/help.png");
+    background-size: 30px 30px;
+}
+
+/*
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+*/

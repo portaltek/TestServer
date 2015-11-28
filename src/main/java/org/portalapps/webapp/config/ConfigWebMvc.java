@@ -67,36 +67,4 @@ public class ConfigWebMvc extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
-	// @Bean
-	// public UrlBasedViewResolver viewResolver() {
-	// UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-	// viewResolver.setViewClass(TilesView.class);
-	// return viewResolver;
-	// }
-
-	// @Bean
-	// public TilesConfigurer tilesConfigurer() {
-	// TilesConfigurer c = new TilesConfigurer();
-	// c.setDefinitions("/WEB-INF/layouts/layouts.xml",
-	// "/WEB-INF/layouts/views.xml");
-	//// c.setCheckRefresh(true);
-	// c.setPreparerFactoryClass(SpringBeanPreparerFactory.class);
-	// return new TilesConfigurer();
-	// }
-
-	@Bean
-	TilesViewResolver viewResolver() {
-		TilesViewResolver viewResolver = new TilesViewResolver();
-		return viewResolver;
-	}
-
-	@Bean
-	TilesConfigurer tilesConfigurer() {
-		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-//		tilesConfigurer.setDefinitions("WEB-INF/tiles/tiles.xml", "WEB-INF/tiles/products.xml");
-		tilesConfigurer.setDefinitions("WEB-INF/tiles/tiles.xml");
-		tilesConfigurer
-				.setPreparerFactoryClass(org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory.class);
-		return tilesConfigurer;
-	}
 }
