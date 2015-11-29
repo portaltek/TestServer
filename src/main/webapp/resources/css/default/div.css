@@ -1,0 +1,13 @@
+/**/
+.ui-listview>.ui-li-static {
+	padding: 0 0 0 0;
+}
+
+.ui-panel-inner .ui-collapsible-heading {
+	margin: 0em !important;
+}
+
+.login-div {
+	margin: 0 auto !important;
+	max-width: 30em;
+}

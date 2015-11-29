@@ -59,7 +59,8 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
             url="/accessDenied";
         }
  
-        return url;
+//        return url;
+        return "/home";
     }
   
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {

@@ -16,6 +16,7 @@
 
 
 <link href="${lib}/jqm/1.4.5/jquery.mobile.css" rel="stylesheet" />
+<link href="${lib}/jqm/default/jquery.mobile.css" rel="stylesheet" />
 <link href="${css}/buttons.css" rel="stylesheet" />
 <link href="${css}/div.css" rel="stylesheet" />
 <link href="${css}/icons.css" rel="stylesheet" />
@@ -33,7 +34,7 @@
 		<div data-role="header">
 			<a href="#" style="display: none"></a>
 			<h1>APP NAME</h1>
-			<a  href="#infoPanel" data-position="right"
+			<a href="#infoPanel" data-position="right"
 				onmouseover="clickOnMouseOver(this)"
 				class="ui-btn ui-shadow ui-corner-all ui-icon-info ui-btn-icon-notext">Options</a>
 		</div>
@@ -48,7 +49,7 @@
 
 		<div role="main" class="ui-content">
 
-			<div class="login-form">
+			<div class="login-form login-div" draggable="true">
 				<c:url var="loginUrl" value="/login" />
 				<form action="${loginUrl}" method="post" class="form-horizontal">
 					<c:if test="${param.error != null}">
@@ -61,8 +62,7 @@
 							<p>You have been logged out successfully.</p>
 						</div>
 					</c:if>
-
-
+			
 					<div data-role="fieldcontain">
 						<!-- 						<label for="name">Text Input:</label> -->
 						<input type="text" class="form-control" id="username"

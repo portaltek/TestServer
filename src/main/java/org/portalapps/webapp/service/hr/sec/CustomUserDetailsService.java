@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.portalapps.webapp.dto.sec.CustomUser;
 import org.portalapps.webapp.dto.sec.SecRol;
 import org.portalapps.webapp.dto.sec.SecUser;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -27,13 +28,29 @@ public class CustomUserDetailsService implements UserDetailsService{
 			throws UsernameNotFoundException {
 		try {
 			SecUser user = dao.findById(id);
-//			System.out.println(user);
 			if(user==null){
-//				System.out.println("User not found");
 				throw new UsernameNotFoundException("Username not found");
 			}
-			return new User(user.getUserId(), user.getPassword(), 
-					user.getStateId().equals("ACT"), true, true, true, getGrantedAuthorities(user));
+			
+			CustomUser u=new CustomUser(
+					user.getUserId(), user.getPassword(), 
+					user.getStateId().equals("ACT"),
+					true, true, true,
+					getGrantedAuthorities(user));
+			
+			List<String> urlList = new ArrayList<>();
+			urlList.add("/admin");
+			urlList.add("/admin/main");
+			urlList.add("/user");
+			urlList.add("/user/main");
+			urlList.add("/dba");
+			urlList.add("/dba/main");
+			urlList.add("/opcion");
+			urlList.add("/opcion/main");
+			urlList.add("/opcion/main");
+						
+			u.setUrlList(urlList);
+			return u;
 		} catch (Exception e) {
 			throw new InternalAuthenticationServiceException(e.getMessage() , e);
 		}

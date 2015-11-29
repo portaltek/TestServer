@@ -1,5 +1,7 @@
 package org.portalapps.webapp.config;
 
+import javax.servlet.Filter;
+
 import org.portalapps.webapp.config.impl.ConfigHr;
 import org.portalapps.webapp.config.impl.ConfigSec;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +68,6 @@ public class ConfigWebMvc extends WebMvcConfigurerAdapter {
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
+
 
 }

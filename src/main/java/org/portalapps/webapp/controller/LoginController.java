@@ -25,21 +25,6 @@ public class LoginController {
 	@Resource 
 	SecUserService secUserService;
 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("user", getPrincipal());
-		model.addObject("title", "Spring Security Custom Login Form");
-		model.addObject("message", "This is protected page!");
-		model.setViewName("admin");
-
-		return model;
-	}	
-	
-
-	
-	
 	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 
@@ -51,6 +36,31 @@ public class LoginController {
 		return model;
 
 	}
+
+	
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	public ModelAndView home() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("home");
+		return model;
+	}
+
+	
+	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+	public ModelAndView adminPage() {
+
+		ModelAndView model = new ModelAndView();
+		model.addObject("user", getPrincipal());
+		model.addObject("title", "Spring Security Custom Login Form");
+		model.addObject("message", "This is protected page!");
+		model.setViewName("admin");
+		System.out.println("admin");
+		return model;
+	}	
+	
+
+	
+	
 
 
 

@@ -155,37 +155,11 @@
 		<!-- Tiles API -->
 		<!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-api -->
 		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-api</artifactId>
-			<version>3.0.5</version>
-		</dependency>
-
-
-		<!-- Tiles Core -->
-		<!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>3.0.5</version>
-		</dependency>
-
-		<!-- Tiles Servlet -->
-		<!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-servlet</artifactId>
-			<version>3.0.5</version>
-		</dependency>
-
-		<!-- Tiles JSP -->
-		<!-- http://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
-		<!-- SITEMESH -->
-		<dependency>
-			<groupId>org.sitemesh</groupId>
+			<groupId>opensymphony</groupId>
 			<artifactId>sitemesh</artifactId>
-			<version>3.0.1</version>
-		</dependency>
+			<version>2.4.2</version>
 
+		</dependency>
 
 	</dependencies>
 

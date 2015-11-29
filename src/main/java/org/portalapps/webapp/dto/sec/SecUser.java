@@ -33,6 +33,8 @@ public class SecUser implements Serializable {
 	private String email;
 	@Column(name = "STATE_ID", unique = false, nullable = false, length = 100)
 	private String stateId;	
+	
+
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "SEC_USER_ROL", 
@@ -93,5 +95,6 @@ public class SecUser implements Serializable {
 	public String toString(){
 		return "SEC_USER[userId=" + userId + ", firstName=" + firstName  + "]";
 	}
+
 
 }
