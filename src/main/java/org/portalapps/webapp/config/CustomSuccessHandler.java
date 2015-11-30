@@ -1,15 +1,11 @@
 package org.portalapps.webapp.config;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
- 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -18,9 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
-	private final String USER = "APP_USER";
-	private final String ADMIN = "APP_ADMIN";
-	private final String DBA = "APP_DBA";
+//	private final String USER = "APP_USER";
+//	private final String ADMIN = "APP_ADMIN";
+//	private final String DBA = "APP_DBA";
 
  
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -39,6 +35,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
     }
      
     protected String determineTargetUrl(Authentication authentication) {
+    	/*
         String url="";
          
         Collection<? extends GrantedAuthority> authorities =  authentication.getAuthorities();
@@ -59,7 +56,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
             url="/accessDenied";
         }
  
-//        return url;
+        return url;*/
         return "/home";
     }
   

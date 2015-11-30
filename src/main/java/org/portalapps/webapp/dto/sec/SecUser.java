@@ -37,10 +37,10 @@ public class SecUser implements Serializable {
 
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "SEC_USER_ROL", 
+	@JoinTable(name = "SEC_USER_ROLE", 
 	joinColumns = { @JoinColumn(name = "USER_ID") }, 
-	inverseJoinColumns = { @JoinColumn(name = "ROL_ID") })
-	private List<SecRol> userRolList = new ArrayList<SecRol>();	
+	inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
+	private List<SecRole> userRoleList = new ArrayList<SecRole>();	
 
 
 	public SecUser() {
@@ -86,11 +86,11 @@ public class SecUser implements Serializable {
 	public void setStateId(String stateId) {
 		this.stateId = stateId;
 	}
-	public List<SecRol> getUserRolList() {
-		return userRolList;
+	public List<SecRole> getUserRoleList() {
+		return userRoleList;
 	}
-	public void setUserRolList(List<SecRol> userRolList) {
-		this.userRolList = userRolList;
+	public void setUserRoleList(List<SecRole> userRoleList) {
+		this.userRoleList = userRoleList;
 	}
 	public String toString(){
 		return "SEC_USER[userId=" + userId + ", firstName=" + firstName  + "]";

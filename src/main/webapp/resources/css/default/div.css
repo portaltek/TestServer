@@ -7,7 +7,31 @@
 	margin: 0em !important;
 }
 
-.login-div {
+.login-form-div {
 	margin: 0 auto !important;
 	max-width: 30em;
 }
+
+.login-user-input {
+	position: relative;
+	display: inline;
+	float: right;
+	top: 1.25em;
+	right: .8em;
+}
+
+ui-panel-inner ui-first-child {
+    background-color: #f00 !important; /*{a-bar-background-color}*/;
+    border-color: #003e67 /*{a-bar-border}*/;
+    color: #ffffff /*{a-bar-color}*/;
+    text-shadow: 0 /*{a-bar-shadow-x}*/ 1px /*{a-bar-shadow-y}*/ 0
+        /*{a-bar-shadow-radius}*/    #444444 /*{a-bar-shadow-color}*/;
+    font-weight: bold;
+}
+/*
+.app-header, .app-header h1{
+	background-color: #40a0ff !important;
+	color: #fff !important;
+	text-shadow: 0 1px 0 #555 !important;
+}
+*/

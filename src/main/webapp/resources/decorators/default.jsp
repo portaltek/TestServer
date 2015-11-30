@@ -20,7 +20,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>WEBAPP</title>
-<link href="${lib}/jqm/1.4.5/jquery.mobile.css" rel="stylesheet" />
+<link href="${lib}/jqm/default/jquery.mobile.css" rel="stylesheet" />
+<link href="${lib}/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
 <link href="${css}/buttons.css" rel="stylesheet" />
 <link href="${css}/div.css" rel="stylesheet" />
 <link href="${css}/icons.css" rel="stylesheet" />
@@ -33,6 +35,8 @@
 
 
 <dec:head />
+
+
 </head>
 <body>
 
@@ -47,7 +51,7 @@
 				<c:forEach items="${menuList}" var="m">
 					<li data-role="listview" data-iconpos="right" data-inset="false">
 						<a href="${ctx}${m}">${ctx}${m}</a>
-				</c:forEach>				
+				</c:forEach>
 			</ul>
 		</div>
 

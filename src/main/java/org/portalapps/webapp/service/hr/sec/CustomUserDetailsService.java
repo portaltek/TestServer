@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.portalapps.webapp.dto.sec.CustomUser;
-import org.portalapps.webapp.dto.sec.SecRol;
+import org.portalapps.webapp.dto.sec.SecRole;
 import org.portalapps.webapp.dto.sec.SecUser;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,6 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 					getGrantedAuthorities(user));
 			
 			List<String> urlList = new ArrayList<>();
+			urlList.add("/mantto/secSystem/");
 			urlList.add("/admin");
 			urlList.add("/admin/main");
 			urlList.add("/user");
@@ -61,8 +62,8 @@ public class CustomUserDetailsService implements UserDetailsService{
 	private List<GrantedAuthority> getGrantedAuthorities(SecUser user){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-		for(SecRol secRol : user.getUserRolList()){
-			String rol =  secRol.getRolName(); //"ROLE_" +
+		for(SecRole secRol : user.getUserRoleList()){
+			String rol =  secRol.getName(); //"ROLE_" +
 			authorities.add(new SimpleGrantedAuthority(rol));
 		}
 //		System.out.println("authorities :"+authorities.toString());

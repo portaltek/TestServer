@@ -17,6 +17,8 @@
 
 <link href="${lib}/jqm/1.4.5/jquery.mobile.css" rel="stylesheet" />
 <link href="${lib}/jqm/default/jquery.mobile.css" rel="stylesheet" />
+<link href="${lib}/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
 <link href="${css}/buttons.css" rel="stylesheet" />
 <link href="${css}/div.css" rel="stylesheet" />
 <link href="${css}/icons.css" rel="stylesheet" />
@@ -25,13 +27,17 @@
 <script src="${lib}/jq/1.10.2/jquery.js"></script>
 <script src="${lib}/jqm/1.4.5/jquery.mobile.js"></script>
 <script src="${js}/default.js"></script>
-
+<script>
+	$(function() {
+		$("#username").focus();
+	});
+</script>
 </head>
 
 <body>
 
 	<div data-role="page" id="defaultPage">
-		<div data-role="header">
+		<div data-role="header" class="app-header">
 			<a href="#" style="display: none"></a>
 			<h1>APP NAME</h1>
 			<a href="#infoPanel" data-position="right"
@@ -41,7 +47,13 @@
 
 		<div data-role="panel" id="infoPanel" data-display="overlay"
 			data-position="right">
-			<h2>Info</h2>
+			<ul data-role="listview" data-inset="false" data-shadow="false">
+
+				<li data-role="listview" data-inset="false" data-icon="info"><a
+					href="">Info</a></li>
+			</ul>
+
+			<p>
 			<p>Some text in the panel..</p>
 			<a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline">Close
 				Panel</a>
@@ -49,7 +61,7 @@
 
 		<div role="main" class="ui-content">
 
-			<div class="login-form login-div" draggable="true">
+			<div class="login-form login-form-div">
 				<c:url var="loginUrl" value="/login" />
 				<form action="${loginUrl}" method="post" class="form-horizontal">
 					<c:if test="${param.error != null}">
@@ -62,17 +74,25 @@
 							<p>You have been logged out successfully.</p>
 						</div>
 					</c:if>
-			
+
 					<div data-role="fieldcontain">
-						<!-- 						<label for="name">Text Input:</label> -->
+						<div class="login-user-input">
+							<i class="fa fa-user fa-lg"></i>
+						</div>
 						<input type="text" class="form-control" id="username"
-							value="admin" name="j_username" placeholder="Enter Username"
-							required>
+							value="admin" maxlength="50" name="j_username"
+							placeholder="Enter Username" required>
 					</div>
 					<div data-role="fieldcontain">
+						<div class="login-user-input">
+							<i class="fa fa-lock fa-lg"></i>
+						</div>
 						<input type="password" class="form-control" id="password"
-							value="admin" name="j_password" placeholder="Enter Password"
-							required>
+							maxlength="50" value="admin" name="j_password"
+							placeholder="Enter Password" required>
+
+
+
 					</div>
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
@@ -85,7 +105,7 @@
 			</div>
 
 		</div>
-		<div data-role="footer" data-position="fixed">
+		<div data-role="footer" class="app-header" data-position="fixed">
 			<h4>My Footer</h4>
 		</div>
 	</div>
