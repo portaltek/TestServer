@@ -5,7 +5,7 @@ var SecSystemService = function(ctx) {
 	};
 	this.insert = function(entity) {
 		$.ajax({
-			url : this.url + "/insert", method: "POST",	
+			url : this.url + "/insert", type: "POST",	
 			data : {
 				entity : entity
 			},

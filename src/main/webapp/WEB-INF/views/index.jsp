@@ -1,13 +1,12 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
-    uri="http://www.springframework.org/security/tags"%>
+	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<c:set var="js" value="${ctx}/resources/js" />
-<c:set var="lib" value="${ctx}/resources/lib" />
 <sec:authentication var="menuList" property="principal.urlList"
-    htmlEscape="false" />
-    
+	htmlEscape="false" />
 <tiles:insertDefinition name="home">
 	<tiles:putAttribute name="home.body">
 		<div class="ui-bar ui-bar-a">
@@ -40,12 +39,14 @@
 				</c:choose>
 				<div class="ui-block-${column}">
 					<div class="ui-bar ui-bar-a" style="height: 60px;">
-						<a href=" ${ctx}${m}" data-ajax="false" class="ui-link">${m}</a>
-						<%-- 							<c:out value="${loop.index}" /> --%>
+						<%-- 					${ctx}${m} --%>
+						<c:out value="${loop.current}" />
+						<c:out value="${column}" />
+						<c:out value="${loop.index}" />
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>
-
+"

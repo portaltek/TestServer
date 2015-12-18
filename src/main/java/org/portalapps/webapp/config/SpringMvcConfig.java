@@ -1,7 +1,5 @@
 package org.portalapps.webapp.config;
 
-import javax.servlet.Filter;
-
 import org.portalapps.webapp.config.impl.ConfigHr;
 import org.portalapps.webapp.config.impl.ConfigSec;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
-import org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
@@ -33,7 +30,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @Import({ ConfigHr.class, ConfigSec.class,
 		// ConfigSecurity.class,
 })
-public class ConfigWebMvc extends WebMvcConfigurerAdapter {
+public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
 	protected Prop prop;
@@ -44,11 +41,12 @@ public class ConfigWebMvc extends WebMvcConfigurerAdapter {
 
 	@Bean(name = "viewResolver")
 	public InternalResourceViewResolver getViewResolver() {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix(PREFIX_RESOLVER);
-		viewResolver.setSuffix(SUFIX_RESOLVER);
-		viewResolver.setViewClass(JstlView.class);
-		return viewResolver;
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix(PREFIX_RESOLVER);
+		resolver.setSuffix(SUFIX_RESOLVER);
+		resolver.setViewClass(JstlView.class);
+//		resolver.setViewClass(TilesView.class);
+		return resolver;
 	}
 
 	@Override
@@ -69,5 +67,32 @@ public class ConfigWebMvc extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
+//	@Bean
+//	public TilesViewResolver getTilesViewResolver() {
+//		TilesViewResolver tilesViewResolver = new TilesViewResolver();
+//		tilesViewResolver.setPrefix(PREFIX_RESOLVER);
+//		tilesViewResolver.setSuffix(SUFIX_RESOLVER);
+//		tilesViewResolver.setViewClass(TilesView.class);
+//		return tilesViewResolver;
+//	}
+	@Bean
+	public UrlBasedViewResolver urlBasedViewResolver() {
+		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+//		resolver.setPrefix(PREFIX_RESOLVER);
+//		resolver.setSuffix(SUFIX_RESOLVER);
+		resolver.setViewClass(TilesView.class);
+		return resolver;
+	}
+	
+
+	@Bean
+	public TilesConfigurer tilesConfigurer() {
+		TilesConfigurer tilesConfigurer = new TilesConfigurer();
+		tilesConfigurer.setDefinitions(new String[] { "/resources/tiles/tiles-definitions.xml" });
+//		tilesConfigurer.setCheckRefresh(true);
+//		tilesConfigurer.setUseMutableTilesContainer(true);
+		
+		return tilesConfigurer;
+	}
 
 }

@@ -1,8 +1,8 @@
 $(function() {
-//	$(".clickOnMouseOver").mouseenter(function(e) {
-//		$(this).trigger('click');
-//	});
-
+	
+    $(function() {
+        $("#username").focus();
+    });
 });
 
 function validarId(e){

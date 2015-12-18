@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="base"
+		template="/WEB-INF/template/default/login/templateLogin.jsp">
+		<put-attribute name="login.header"
+			value="/WEB-INF/template/default/login/header.jsp" />
+
+		<put-attribute name="footer"
+			value="/WEB-INF/template/default/login/footer.jsp" />
+	</definition>
+
+
+	<definition name="login"
+		template="/WEB-INF/template/default/login/templateLogin.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/template/default/login/header.jsp" />
+
+		<put-attribute name="footer"
+			value="/WEB-INF/template/default/login/footer.jsp" />
+	</definition>
+
+
+	<definition name="home"
+		template="/WEB-INF/template/default/home/templateHome.jsp">
+		<put-attribute name="home.libs"
+            value="/WEB-INF/template/default/home/libs.jsp" />
+		<put-attribute name="home.header"
+			value="/WEB-INF/template/default/home/header.jsp" />
+		<put-attribute name="home.footer"
+			value="/WEB-INF/template/default/home/footer.jsp" />
+	</definition>
+	
+	
+    <definition name="mantto/*"
+        template="/WEB-INF/template/default/home/templateHome.jsp">
+        <put-attribute name="mantto.header"
+            value="/WEB-INF/template/default/home/header.jsp" />
+        <put-attribute name="mantto.body" value="/WEB-INF/views/mantto/{1}/main.jsp" />
+        <put-attribute name="mantto.footer"
+            value="/WEB-INF/template/default/home/footer.jsp" />
+    </definition>	
+	
+</tiles-definitions>

@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import net.sf.json.JSONObject;
 
 @Controller
-//@RestController
+// @RestController
 @RequestMapping("/mantto/secSystem")
 @Transactional("secEntityTransactionManager")
 public class SecSystemController {
@@ -31,7 +31,6 @@ public class SecSystemController {
 	@Resource
 	SecSystemDao dao;
 
-	
 	@RequestMapping(value = { "/" })
 	public String main(ModelMap m) {
 		m.put("title", "Spring Security Custom Login Form");
@@ -39,31 +38,35 @@ public class SecSystemController {
 		m.put("list", dao.findAll());
 		return "mantto/secSystem/main";
 	}
-	
-//	@RequestMapping(value = { "/insert" }, method = RequestMethod.POST)
-//	public void insert(ModelMap m,
-//			@ModelAttribute("entity") SecSystem secSystem) {
-//		m.put("title", "Spring Security Custom Login Form");
-//		m.put("message", "This is welcome page!");
-//		m.put("list", dao.findAll());
-//
-//	}
-	
-//	@ResponseBody
-//	@RequestMapping(value = { "/insert" })
-//	public ResponseEntity<String> insert(ModelMap m) {
-//		JSONObject json = new JSONObject();
-//		m.put("title", "Spring Security Custom Login Form");
-//		m.put("message", "This is welcome page!");
-//		m.put("list", dao.findAll());
-//		json.put("m", m);
-//		return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
-//
-//	}
+
+	// @RequestMapping(value = { "/insert" }, method = RequestMethod.POST)
+	// public void insert(ModelMap m,
+	// @ModelAttribute("entity") SecSystem secSystem) {
+	// m.put("title", "Spring Security Custom Login Form");
+	// m.put("message", "This is welcome page!");
+	// m.put("list", dao.findAll());
+	//
+	// }
+
+	// @ResponseBody
+	// @RequestMapping(value = { "/insert" })
+	// public ResponseEntity<String> insert(ModelMap m) {
+	// JSONObject json = new JSONObject();
+	// m.put("title", "Spring Security Custom Login Form");
+	// m.put("message", "This is welcome page!");
+	// m.put("list", dao.findAll());
+	// json.put("m", m);
+	// return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
+	//
+	// } Re*34pdse
+
 	@ResponseBody
-	@RequestMapping(value = "/insert", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<String> insert(@ModelAttribute("entity") SecSystem secSystem) {
+	@RequestMapping(value = "/insert")
+	public ResponseEntity<String> insert(
+
+	) {
 		JSONObject json = new JSONObject();
+		SecSystem secSystem;
 		List<SecSystem> list = dao.findAll();
 
 		if (list.isEmpty()) {
@@ -73,7 +76,7 @@ public class SecSystemController {
 		json.put("LIST", list);
 		return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<String> findAll() {

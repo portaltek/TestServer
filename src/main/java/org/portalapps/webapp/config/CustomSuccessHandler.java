@@ -57,7 +57,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         }
  
         return url;*/
-        return "/home";
+        return "redirect:home";
     }
   
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {

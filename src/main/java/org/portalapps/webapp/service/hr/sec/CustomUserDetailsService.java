@@ -40,6 +40,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 			
 			List<String> urlList = new ArrayList<>();
 			urlList.add("/mantto/secSystem/");
+			urlList.add("/main");
 			urlList.add("/admin");
 			urlList.add("/admin/main");
 			urlList.add("/user");
