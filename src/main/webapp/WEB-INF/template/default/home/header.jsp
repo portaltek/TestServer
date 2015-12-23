@@ -15,8 +15,8 @@
 			href="${ctx}/home">Home</a></li>
 
 		<c:forEach items="${menuList}" var="m">
-			<li data-role="listview" data-iconpos="right" data-inset="false">
-				<a href="${ctx}${m}">${ctx}${m}</a>
+			<li data-role="listview" data-iconpos="right" >
+				<a href="${ctx}${m}" data-inset="false">${ctx}${m}</a>
 		</c:forEach>
 	</ul>
 </div>

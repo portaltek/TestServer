@@ -1,7 +1,5 @@
 package org.portalapps.webapp.config;
 
-import javax.servlet.Filter;
-
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class InitializerWebApp extends AbstractAnnotationConfigDispatcherServletInitializer {

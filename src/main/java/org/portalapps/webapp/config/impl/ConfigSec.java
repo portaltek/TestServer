@@ -1,8 +1,6 @@
 package org.portalapps.webapp.config.impl;
 
-import javax.persistence.EntityManagerFactory;
-
-import org.portalapps.webapp.config.ConfigJpaHibernate;
+import org.portalapps.webapp.config.AppEntityManagerFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,37 +12,36 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableCaching
 @EnableTransactionManagement
-//@EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableJpaRepositories(basePackages = {
 		"org.portalapps.webapp.dao.sec"
 })
-public class ConfigSec extends ConfigJpaHibernate {
-
+public class ConfigSec extends AppEntityManagerFactory {
+	
 	{
-		driver 		= "javax.persistence.jdbc.sec.driver";
-		url 		= "javax.persistence.jdbc.sec.url";
-		user 		= "javax.persistence.jdbc.sec.user";
-		password 	= "javax.persistence.jdbc.sec.password";
-
-
-		hibernateDialect				= "hibernate.sec.dialect";
-		hibernateShowSql				= "hibernate.sec.show_sql";
-		hibernateHbm2ddlAuto			= "hibernate.sec.hbm2ddl.auto";
-		hibernatePackagesToScan 		= "hibernate.sec.packagesToScan";
-		hibernatePersistenceUnitName 	= "hibernate.sec.persistenceUnitName";
+		driverClassName = "sec.jdbc.driverClassName";
+		url 			= "sec.jdbc.url";
+		username 		= "sec.jdbc.username";
+		password 		= "sec.jdbc.password";
+		
+		hibernateDialect 				= "sec.hibernate.dialect";
+		hibernateShowSql 				= "sec.jdbc.url";
+//		hibernateHbm2ddlAuto 			= "sec.hibernate.hbm2ddl.auto";
+		hibernatePackagesToScan 		= "sec.hibernate.packagesToScan";
+		hibernatePersistenceUnitName 	= "sec.hibernate.persistenceUnitName";
+		hibernateEnableLazyLoadNoTrans 	= "sec.hibernate.enableLazyLoadNoTrans";
 	}
+
 
 	@Bean(name="secEntityManagerFactory")    
 	public LocalContainerEntityManagerFactoryBean secEntityManagerFactory()	{
-		return super.entityManagerFactory();
+		return super.getEntityManagerFactory();
 	}
 
 	@Bean(name="secEntityTransactionManager")   
 	public JpaTransactionManager secEntityTransactionManager(){
-		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		EntityManagerFactory emf = secEntityManagerFactory().getObject();
-		transactionManager.setEntityManagerFactory(emf);
-		return transactionManager;
+		return getTransactionManager(secEntityManagerFactory().getObject());
 	}
+
+
 	
 }

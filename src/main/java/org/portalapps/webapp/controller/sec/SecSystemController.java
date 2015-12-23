@@ -5,9 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.portalapps.webapp.dao.sec.SecSystemDao;
-import org.portalapps.webapp.dto.hr.Country;
 import org.portalapps.webapp.dto.sec.SecSystem;
-import org.portalapps.webapp.service.hr.sec.SecSystemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONObject;
 
@@ -63,10 +59,9 @@ public class SecSystemController {
 	@ResponseBody
 	@RequestMapping(value = "/insert")
 	public ResponseEntity<String> insert(
-
+@ModelAttribute("secSystem") SecSystem s
 	) {
 		JSONObject json = new JSONObject();
-		SecSystem secSystem;
 		List<SecSystem> list = dao.findAll();
 
 		if (list.isEmpty()) {
