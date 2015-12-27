@@ -24,7 +24,7 @@ public class ConfigSec extends AppEntityManagerFactory {
 		password 		= "sec.jdbc.password";
 		
 		hibernateDialect 				= "sec.hibernate.dialect";
-		hibernateShowSql 				= "sec.jdbc.url";
+		hibernateShowSql 				= "sec.hibernate.show_sql";
 //		hibernateHbm2ddlAuto 			= "sec.hibernate.hbm2ddl.auto";
 		hibernatePackagesToScan 		= "sec.hibernate.packagesToScan";
 		hibernatePersistenceUnitName 	= "sec.hibernate.persistenceUnitName";

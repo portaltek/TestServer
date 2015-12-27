@@ -28,7 +28,7 @@ public class ConfigHr extends AppEntityManagerFactory {
 		password 		= "hr.jdbc.password";
 		
 		hibernateDialect 				= "hr.hibernate.dialect";
-		hibernateShowSql 				= "hr.jdbc.url";
+		hibernateShowSql 				= "hr.hibernate.show_sql";
 //		hibernateHbm2ddlAuto 			= "hr.hibernate.hbm2ddl.auto";
 		hibernatePackagesToScan 		= "hr.hibernate.packagesToScan";
 		hibernatePersistenceUnitName 	= "hr.hibernate.persistenceUnitName";

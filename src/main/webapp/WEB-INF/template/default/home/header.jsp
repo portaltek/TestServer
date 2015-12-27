@@ -46,6 +46,7 @@
 
 
 <div data-role="header">
+    <input type="hidden" id="ctx" value="${ctx}" />
 	<a href="#menu" onmouseover="clickOnMouseOver(this);"
 		class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ">Menu</a>
 

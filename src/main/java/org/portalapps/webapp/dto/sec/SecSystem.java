@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "SEC_SYSTEM", catalog = "SEC")
 public class SecSystem implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "SYSTEM_ID", unique = true, nullable = false, length = 20)

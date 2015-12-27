@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+	<Properties>
+		<Property name="WEBSERVERS">D:\\Ronald\\Programacion\\webservers
+		</Property>
+		<Property name="JBOSS_HOME">${WEBSERVERS}\\wildfly\\wildfly-8.2.1.Final
+		</Property>
+		<Property name="FILE_PATH">${JBOSS_HOME}\\standalone\\log\\sec\\sec.log
+		</Property>
+
+		<!-- <Property name="PATTERN">%-5level|%d{yyyyMMdd_HH:mm:ss.SSS}|%c{1}|%msg%n -->
+		<!-- </Property> -->
+		<Property name="PATTERN">%-5level|%d{yyyyMMdd_HH:mm:ss.SSS}|%msg%n
+		</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="file" fileName="${FILE_PATH}"
+			filePattern="${FILE_PATH}-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="${PATTERN}" />
+
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="1 KB" />
+			</Policies>
+		</RollingFile>
+		<Console name="console" target="SYSTEM.OUT">
+			<PatternLayout pattern="${PATTERN}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.portalapps" level="INFO" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="file" />
+		</Logger>
+		<Root level="INFO" additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="file" />
+		</Root>
+	</Loggers>
+</Configuration>

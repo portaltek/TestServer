@@ -24,7 +24,7 @@ public class SecUserService {
     }
     
     
-    public void insert(SecUser user){
+    public void insert(SecUser user) throws Exception{
     	String p = passwordEncoder.encode(user.getPassword());
         user.setPassword(p); 
         user.setStateId("ACT");

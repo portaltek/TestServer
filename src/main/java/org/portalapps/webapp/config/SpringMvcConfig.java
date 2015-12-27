@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -30,7 +29,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 		// ConfigSecurity.class,
 })
 public class SpringMvcConfig extends WebMvcConfigurerAdapter {
-
+ 
 	@Autowired
 	protected Prop prop;
 
@@ -44,7 +43,6 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 		resolver.setPrefix(PREFIX_RESOLVER);
 		resolver.setSuffix(SUFIX_RESOLVER);
 		resolver.setViewClass(JstlView.class);
-//		resolver.setViewClass(TilesView.class);
 		return resolver;
 	}
 
@@ -56,41 +54,36 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public MessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
+		return bundle();
 	}
+	
+	@Bean
+	public AppBundle bundle() {
+		AppBundle bundle = new AppBundle();
+		bundle.setBasename("i18n/messages");
+		bundle.setUseCodeAsDefaultMessage(true);
+		return bundle;
+	}
+
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
-//	@Bean
-//	public TilesViewResolver getTilesViewResolver() {
-//		TilesViewResolver tilesViewResolver = new TilesViewResolver();
-//		tilesViewResolver.setPrefix(PREFIX_RESOLVER);
-//		tilesViewResolver.setSuffix(SUFIX_RESOLVER);
-//		tilesViewResolver.setViewClass(TilesView.class);
-//		return tilesViewResolver;
-//	}
 	@Bean
 	public UrlBasedViewResolver urlBasedViewResolver() {
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-//		resolver.setPrefix(PREFIX_RESOLVER);
-//		resolver.setSuffix(SUFIX_RESOLVER);
+		// resolver.setPrefix(PREFIX_RESOLVER);
+		// resolver.setSuffix(SUFIX_RESOLVER);
 		resolver.setViewClass(TilesView.class);
 		return resolver;
 	}
-	
 
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
 		TilesConfigurer tilesConfigurer = new TilesConfigurer();
 		tilesConfigurer.setDefinitions(new String[] { "/resources/tiles/tiles-definitions.xml" });
-//		tilesConfigurer.setCheckRefresh(true);
-//		tilesConfigurer.setUseMutableTilesContainer(true);
-		
 		return tilesConfigurer;
 	}
 
