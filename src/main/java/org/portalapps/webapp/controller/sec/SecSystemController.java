@@ -33,9 +33,9 @@ public class SecSystemController extends AbstractSecController {
 	@ModelAttribute("secSystem")
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView main(ModelMap m) {
-		m.put("title", "Spring Security Custom Login Form");
-		m.put("message", "This is welcome page!!!");
-		m.put("list", dao.findAll());
+//		m.put("title", "Spring Security Custom Login Form");
+//		m.put("message", "This is welcome page!!!");
+//		m.put("list", dao.findAll());
 
 		// return ;
 		return new ModelAndView("mantto/secSystem/main", "secSystem", new SecSystem());

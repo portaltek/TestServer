@@ -21,16 +21,10 @@
 <link href="${css}/icons.css" rel="stylesheet" />
 <link href="${css}/default.css" rel="stylesheet" />
 
-
 <script src="${lib}/jq/1.10.2/jquery.js"></script>
-
 <script src="${lib}/angular/angular.js"></script>
+<script src="${lib}/jqm/1.4.5/jquery.mobile.js"></script>
 <%-- <script src="${js}/default.js"></script> --%>
-
-<link href="${lib}/tablesaw/tablesaw.css" rel="stylesheet" />
-<%-- <script src="${lib}/tablesaw/tablesaw.js"></script> --%>
-<%-- <script src="${lib}/tablesaw/tablesaw-init.js"></script> --%>
-<%-- <script src="${lib}/jqm/1.4.5/jquery.mobile.js"></script> --%>
 
 </head>
 <body>
@@ -38,18 +32,9 @@
 		<tiles:insertAttribute name="mantto.header" />
 		asdf
 		<div role="main" class="ui-content">
-		asfasfasd
 			<tiles:insertAttribute name="mantto.body" />
 		</div>
 		<%-- 		<tiles:insertAttribute name="home.footer" /> --%>
 	</div>
-	<script>
-		$(function() {
-			$(document).prop('title', 'HOME');
-			$(".tablesaw-sortable-btn").removeClass("ui-btn");
-			$(".tablesaw-sortable-btn").removeClass("ui-shadow");
-			$(".tablesaw-sortable-btn").removeClass("ui-corner-all");
-		});
-	</script>
 </body>
 </html>

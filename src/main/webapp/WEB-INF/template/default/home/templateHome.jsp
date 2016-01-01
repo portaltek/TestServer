@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>WEBAPP</title>
 <tiles:insertAttribute name="home.libs" />
+
 </head>
 <body>
 	<div data-role="page" id="defaultPage">

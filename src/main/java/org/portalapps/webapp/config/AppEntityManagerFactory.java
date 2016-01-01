@@ -35,7 +35,6 @@ public abstract class AppEntityManagerFactory extends AppDataSource {
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setDataSource(getDataSource());
 		em.setPackagesToScan(prop.getProp(hibernatePackagesToScan));
-//		System.out.println(prop.getProp(hibernatePackagesToScan));
 		em.setPersistenceUnitName(prop.getProp(hibernatePersistenceUnitName));		
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(getHibernateProperties());
