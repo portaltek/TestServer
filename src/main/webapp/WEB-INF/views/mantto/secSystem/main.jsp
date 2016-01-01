@@ -16,7 +16,7 @@
 <tiles:insertDefinition name="home">
 	<tiles:putAttribute name="home.body">
 		<head>
-<script src="${js}/sec/secSystem/secSystem.js"></script>		
+<script src="${js}/sec/secSystem/secSystem.js"></script>
 <link href="${lib}/tablesaw/tablesaw.css" rel="stylesheet" />
 <script src="${lib}/tablesaw/tablesaw.js"></script>
 <script src="${lib}/tablesaw/tablesaw-init.js"></script>
@@ -30,45 +30,16 @@
 </script>
 		</head>
 		<body>
-
-
-			<table id="secSystemTable2" class="tablesaw paginated"
-				data-tablesaw-mode="swipe" data-filter="true"
-				data-input="#filterTabl2e-input" data-tablesaw-sortable="true">
-				<thead>
-					<tr>
-						<th scope="col" data-tablesaw-sortable-col
-							data-tablesaw-sortable-default-col
-							data-tablesaw-priority="persist">system_Id</th>
-						<th scope="col" data-tablesaw-sortable-col
-							data-tablesaw-priority="2">name</th>
-						<th scope="col" data-tablesaw-sortable-col
-							data-tablesaw-priority="3">description</th>
-						<th scope="col" data-tablesaw-sortable-col
-							data-tablesaw-priority="1">a</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<tr>
-						<td>CNT</td>
-						<td>Contabilidad</td>
-						<td></td>
-						<td><i class='fa fa-edit fa-lg'></i> <i
-							class='fa fa-remove fa-lg'></i></td>
-					</tr>
-
-
-				</tbody>
-			</table>
-
-
-
-
-
-			<!-- 			<div id="secSystemTable-pager" class="pager"></div> -->
-			<!-- 			systemId -->
-			<!-- 			<input type="text" id="secSystemTable-search-systemId" size="10"></input> -->
+			<h1>
+				New
+				<spring:message code="object" />
+				<a href="#secSystemForm-dialog" data-rel="popup"
+					data-position-to="window" data-transition="fade"
+					class="ui-btn ui-corner-all ui-shadow ui-btn-inline">+</a>
+			</h1>
+			<div id="secSystemTable-pager" class="pager"></div>
+			systemId
+			<input type="text" id="secSystemTable-search-systemId" size="10"></input>
 			<div class="tablesaw-bar mode-toggle">
 
 				<!-- data-tablesaw-minimap data-tablesaw-mode-switch  data-mode="columntoggle"
@@ -77,8 +48,8 @@
 		-->
 
 				<table id="secSystemTable" class="tablesaw paginated"
-					data-tablesaw-mode="swipe" 
-					data-input="#filterTable-input" data-tablesaw-sortable="true">
+					data-tablesaw-mode="swipe" data-input="#filterTable-input"
+					data-tablesaw-sortable="true">
 					<thead>
 						<tr>
 							<th scope="col" data-tablesaw-sortable-col
@@ -89,7 +60,7 @@
 							<th scope="col" data-tablesaw-sortable-col
 								data-tablesaw-priority="3">description</th>
 							<th scope="col" data-tablesaw-sortable-col
-								data-tablesaw-priority="1">a</th>
+								data-tablesaw-priority="1"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -106,34 +77,42 @@
 					</tbody>
 				</table>
 			</div>
-			<h1>
-				New
-				<spring:message code="object" />
-			</h1>
-			<c:url var="insertUrl" value="/mantto/secSystem/insert" />
-			<form:form id="secSystemForm" modelAttribute="secSystem">
+			<div id="secSystemForm-dialog" data-role="popup"
+				data-transition="fade">
+				<div data-role="header">
+					<a href="#"
+						class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-left"
+						data-rel="back">Close</a>
+					<h1 class="ui-title" role="heading" aria-level="1">Dialog</h1>
+				</div>
+				<div role="main" class="ui-content">
+					<form:form id="secSystemForm" modelAttribute="secSystem">
 
-				<table>
-					<tr>
-						<td><form:label path="systemId">ID:</form:label></td>
-						<td><form:input path="systemId" /></td>
-					</tr>
-					<tr>
-						<td><form:label path="name">Name:</form:label></td>
-						<td><form:input path="name" /></td>
-					</tr>
+						<table>
+							<tr>
+								<td><form:label path="systemId">ID:</form:label></td>
+								<td><form:input path="systemId" /></td>
+							</tr>
+							<tr>
+								<td><form:label path="name">Name:</form:label></td>
+								<td><form:input path="name" /></td>
+							</tr>
 
-					<tr>
-						<td><form:label path="description">Description:</form:label></td>
-						<td><form:input path="description" /></td>
-					</tr>
-					<tr>
-						<td><input type="button" value="CANCEL" /></td>
-						<td><input type="button" value="SAVE" onclick="insert()" /></td>
-					</tr>
-				</table>
+							<tr>
+								<td><form:label path="description">Description:</form:label></td>
+								<td><form:input path="description" /></td>
+							</tr>
+							<tr>
+								<td><a href="#"
+									class="ui-btn ui-corner-all ui-shadow ui-btn-inline"
+									data-rel="back">CANCEL</a></td>
+								<td><input type="button" value="SAVE" onclick="insert()" /></td>
+							</tr>
+						</table>
 
-			</form:form>
+					</form:form>
+				</div>
+			</div>
 		</body>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

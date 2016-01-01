@@ -49,10 +49,10 @@ $(function() {
 	var table = $("#secSystemTable");
 	var pager = $("#secSystemTable-pager");
 	var tablePagination = new TablePagination(table, pager);
-	tablePagination.paginate(1);
+	tablePagination.paginate(10);
 	$("#secSystemTable-search-systemId").bind('change', function() {
 		publicTable.filter("systemId", this.value);
-		tablePagination.paginate(1);
+		tablePagination.paginate(10);
 	});
 	
 //	$( ".draggable" ).draggable();
