@@ -9,24 +9,24 @@ function TablePagination(table, pager) {
 	self.numPages = Math.ceil(self.numRows / self.numPerPage);
 
 	/*
-	 * Main function for execute pagination. 
+	 * Main function for execute pagination.
 	 */
 	this.paginate = function(numPerPage) {
 		self.pager.html("");
 		self.numPerPage = numPerPage || self.numPerPage;
 		self.numRows = self.table.find('tbody tr').length;
 		self.numPages = Math.ceil(self.numRows / self.numPerPage);
-
-		self.printPageNumber("|&lt;", 0);
-		self.printPreviousPageNumber("&lt;&lt;");
+		
+		self.printPageNumber("<i class='fa fa-fast-backward fa-lg'/>", 0);
+		self.printPreviousPageNumber("<i class='fa fa-backward fa-lg'/>");
 		for (var page = 0; page < self.numPages; page++) {
 			self.printPageNumber(page + 1, page);
 		}
-		self.printNextPageNumber("&gt;&gt;");
-		self.printPageNumber("&gt;|", self.numPages - 1);
+		self.printNextPageNumber("<i class='fa fa-forward fa-lg'/>");
+		self.printPageNumber("<i class='fa fa-fast-forward fa-lg'/>", self.numPages - 1);
 
 		self.pager.find('div.page-number:nth(2)').addClass('active');
-		
+
 		self.table.bind('repaginate', self.repaginate);
 		self.table.trigger('repaginate');
 	};
@@ -35,7 +35,7 @@ function TablePagination(table, pager) {
 	 * Paginates rows per page
 	 */
 	self.repaginate = function() {
-		
+
 		self.table.find('tbody tr').hide().slice(
 				self.currentPage * self.numPerPage,
 				(self.currentPage + 1) * self.numPerPage).show();

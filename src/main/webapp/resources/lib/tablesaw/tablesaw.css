@@ -371,9 +371,9 @@ table.tablesaw thead th, table.tablesaw thead td {
 .tablesaw {
 	border-right: 1px solid #e4e1de;
 	border-left: 1px solid #e4e1de;
--webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.18);
--moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.18);
-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.18);
+	-webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.18);
+	-moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.18);
+	box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.18);
 }
 
 .tablesaw thead {

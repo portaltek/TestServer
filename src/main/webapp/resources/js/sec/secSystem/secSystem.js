@@ -1,3 +1,27 @@
+var publicTable = new Table();
+var tablePagination ;
+$(function() {
+	$("#systemId").val("asd");
+	$("#name").val("asd");
+	$("#description").val("asd");
+	var table = $("#secSystemTable");
+	var pager = $("#secSystemTable-pager");
+	tablePagination = new TablePagination(table, pager);
+	
+	findAll();
+//	publicTable.print();
+//	$("#secSystemForm").hide();
+	// $("h1").html("table.js");
+
+	$("#secSystemTable-search-systemId").bind('change', function() {
+		publicTable.filter("systemId", this.value);
+		tablePagination.paginate(10);
+	});
+	
+//	$( ".draggable" ).draggable();
+
+});
+
 /*
  * 1- Dar estilo a la paginación y agregar swipe event.
  * 2- Limitar la paginacion a 5 paginas y agregar botones siguiente, anterior, inicio y final.
@@ -26,8 +50,9 @@ function insert() {
 				s += "RESULT: " + result;
 				s += "\nMSG: " + d.MSG;
 			}
-
+			findAll();
 			alert(s);
+			
 		},
 		error : function(response) {
 			var data = JSON.parse(JSON.stringify(response));
@@ -37,27 +62,31 @@ function insert() {
 	});
 }
 
-$(function() {
-	$("#systemId").val("asd");
-	$("#name").val("asd");
-	$("#description").val("asd");
+function findAll() {
 
-	findAll();
-	publicTable.print();
-//	$("#secSystemForm").hide();
-	// $("h1").html("table.js");
-	var table = $("#secSystemTable");
-	var pager = $("#secSystemTable-pager");
-	var tablePagination = new TablePagination(table, pager);
-	tablePagination.paginate(10);
-	$("#secSystemTable-search-systemId").bind('change', function() {
-		publicTable.filter("systemId", this.value);
-		tablePagination.paginate(10);
+	var ctx = $("#ctx").val();
+	var form = $("#secSystemForm").serialize();
+	var url = ctx + "/mantto/secSystem/findAll";
+	$.ajax({
+		type : "get",
+		// data : form,
+		url : url,
+		dataType : "json",
+		async : false,
+		success : function(response) {
+			var d = JSON.parse(JSON.stringify(response));
+			var data = d.LIST;
+			publicTable.set(data, "secSystemTable");
+			publicTable.print();
+			tablePagination.paginate(10);
+		},
+		error : function(response) {
+			var data = JSON.parse(JSON.stringify(response));
+			var result = data.RESULT;
+			alert("error: " + result);
+		}
 	});
-	
-//	$( ".draggable" ).draggable();
-
-});
+}
 
 function Table(data, id) {
 	this.data = data;
@@ -112,27 +141,4 @@ function Table(data, id) {
 		this.tbody.html(this.rows);		
 	};
 };
-var publicTable = new Table();
-function findAll() {
 
-	var ctx = $("#ctx").val();
-	var form = $("#secSystemForm").serialize();
-	var url = ctx + "/mantto/secSystem/findAll";
-	$.ajax({
-		type : "get",
-		// data : form,
-		url : url,
-		dataType : "json",
-		async : false,
-		success : function(response) {
-			var d = JSON.parse(JSON.stringify(response));
-			var data = d.LIST;
-			publicTable.set(data, "secSystemTable");
-		},
-		error : function(response) {
-			var data = JSON.parse(JSON.stringify(response));
-			var result = data.RESULT;
-			alert("error: " + result);
-		}
-	});
-}

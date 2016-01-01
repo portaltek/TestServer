@@ -30,23 +30,48 @@
 </script>
 		</head>
 		<body>
-			<h1>
-				New
-				<spring:message code="object" />
+
+			<!-- 			<h3> -->
+			<!-- 				New -->
+			<%-- 				<spring:message code="object" /> --%>
+			<!-- 				<a href="#secSystemForm-dialog" data-rel="popup" -->
+			<!-- 					data-position-to="window" data-transition="fade" -->
+			<!-- 					class="ui-btn ui-corner-all ui-shadow ui-btn-inline">+</a> -->
+			<!-- 			</h3> -->
+			<label for="file" class="text-center">CRUD: SEC_SYSTEM </label>
+			<div>
 				<a href="#secSystemForm-dialog" data-rel="popup"
 					data-position-to="window" data-transition="fade"
-					class="ui-btn ui-corner-all ui-shadow ui-btn-inline">+</a>
-			</h1>
-			<div id="secSystemTable-pager" class="pager"></div>
-			systemId
-			<input type="text" id="secSystemTable-search-systemId" size="10"></input>
-			<div class="tablesaw-bar mode-toggle">
+					class="ui-btn ui-shadow ui-corner-all ui-icon-plus ui-btn-icon-notext insert"
+					data-inline="true"> </a> <a href="#searchForm" data-rel="popup"
+					data-position-to="window" data-transition="fade"
+					class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext search"
+					data-inline="true"> </a>
+			</div>
+			<div></div>
+
+			<div id="searchForm" data-role="popup" data-transition="fade">
+				<div data-role="header">
+					<a href="#"
+						class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-left"
+						data-rel="back">Close</a>
+					<h1 class="ui-title" role="heading" aria-level="1">Dialog</h1>
+				</div>
+				<div role="main" class="ui-content">
+					<label for="file" class="text-left ">SystemId:</label> <input
+						type="text" id="secSystemTable-search-systemId"
+						class="search-left" />
+				</div>
+			</div>
+			<!-- 			 -->
+
+			<div class="tablesaw-bar mode-toggle table">
 
 				<!-- data-tablesaw-minimap data-tablesaw-mode-switch  data-mode="columntoggle"
 		columntoggle
 		swipe, stack
 		-->
-
+				<div id="secSystemTable-pager" class="pager"></div>
 				<table id="secSystemTable" class="tablesaw paginated"
 					data-tablesaw-mode="swipe" data-input="#filterTable-input"
 					data-tablesaw-sortable="true">
@@ -63,18 +88,7 @@
 								data-tablesaw-priority="1"></th>
 						</tr>
 					</thead>
-					<tbody>
-						<%-- 						<c:forEach items="${list}" var="x"> --%>
-						<!-- 							<tr> -->
-						<%-- 								<td>${ x.systemId }</td> --%>
-						<%-- 								<td>${ x.name }</td> --%>
-						<%-- 								<td>${ x.description }-</td> --%>
-						<!-- 								<td><i class="fa fa-edit fa-lg"></i> <i -->
-						<!-- 									class="fa fa-remove fa-lg"></i></td> -->
-						<!-- 							</tr> -->
-						<%-- 						</c:forEach> --%>
-
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 			<div id="secSystemForm-dialog" data-role="popup"
