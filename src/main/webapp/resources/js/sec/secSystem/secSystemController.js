@@ -8,6 +8,7 @@ function SecSystemController() {
 	this.searchform = $("#searchForm").serialize();
 	this.searchformDiv = $("#searchForm-dialog");
 	this.srv = new SecSystemService();
+	this.val = new SecSystemValidation();
 	this.counter = 0;
 
 	this.findAll = function() {
@@ -42,10 +43,7 @@ function SecSystemController() {
 		this.srv.findId(this, id);
 		this.setForm(this.e, "update");
 		this.formDiv.show();
-		this.formDiv.draggable();
-		$("input#name").notify("Hello Box", "success");
-		$("input#name").notify("Hello Box", "success");
-		$("input#name").notify("Hello Box\nddddd\nasdf", "success");
+		this.formDiv.draggable();		
 	}
 
 	this.setForm = function(data, mode) {
@@ -79,16 +77,19 @@ function SecSystemController() {
 	}
 
 	this.insert = function() {
-		this.form = $("#secSystemForm").serialize();
-		this.srv.insert(this, this.form);
-		this.showResult();
+		if (this.val.validateForm()) {
+			this.form = $("#secSystemForm").serialize();
+			this.srv.insert(this, this.form);
+			this.showResult();
+		}
 	}
 
 	this.update = function() {
-		this.form = $("#secSystemForm").serialize();
-		this.srv.update(this, this.form);
-		this.showResult();
-
+		if (this.val.validateForm()) {
+			this.form = $("#secSystemForm").serialize();
+			this.srv.update(this, this.form);
+			this.showResult();
+		}
 	}
 
 	this.remove = function() {
@@ -98,7 +99,7 @@ function SecSystemController() {
 	}
 
 	this.showResult = function() {
-		var s ="", d = this.data, result = d.RESULT;
+		var s = "", d = this.data, result = d.RESULT;
 		if (result === "OK") {
 			this.findAll();
 			this.formDiv.hide();
@@ -116,5 +117,64 @@ function SecSystemController() {
 
 		}
 
+	}
+}
+
+function SecSystemEntity() {
+	this.systemId = $("#systemId");
+	this.name = $("#name");
+	this.description = $("#description");
+}
+
+function SecSystemValidation() {
+	this.msgList = "";
+	this.entity = new SecSystemEntity();
+	this.estate = true;
+	this.systemId = function(mode) {
+		var msg = "", value = this.entity.systemId.val();
+		this.entity.systemId.removeClass("error");
+		if (value === "") {
+			msg += $("#SecSystemError-SYSTEM_ID_EMPTY").val()+"\n";
+			this.entity.systemId.addClass("error");
+			this.estate = false;
+		}
+		if (value.length < 3) {
+			msg += $("#SecSystemError-SYSTEM_ID_MIN_LENGTH").val()+"\n";
+			this.entity.systemId.addClass("error");
+			this.estate = false;
+		}
+		if (mode === "FORM") {
+			this.msgList += msg;
+		} else {
+			this.entity.systemId.notify(msg, "error");
+		}
+	}
+
+	this.name = function(mode) {
+		var msg = "", value = this.entity.name.val();
+		this.entity.name.removeClass("error");
+		if (value === "") {
+			msg += $("#SecSystemError-NAME_EMPTY").val()+"\n";
+			this.entity.name.addClass("error");
+			this.estate = false;
+		}
+		if (value.length < 3) {
+			msg += $("#SecSystemError-NAME_MIN_LENGTH").val()+"\n";
+			this.entity.name.addClass("error");
+			this.estate = false;
+		}
+		if (mode === "FORM") {
+			this.msgList += msg;
+		} else {
+			this.entity.name.notify(msg, "error");
+		}
+	}
+
+	this.validateForm = function() {
+		this.estate = true, this.msgList = "";
+		this.systemId("FORM");
+		this.name("FORM");
+		$.notify(this.msgList, "error");
+		return this.estate;
 	}
 }

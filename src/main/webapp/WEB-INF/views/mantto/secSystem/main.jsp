@@ -93,21 +93,32 @@
 						data-rel="back"></a>
 				</div>
 				<div role="main" class="ui-content">
+
+					<input type=hidden id="SecSystemError-SYSTEM_ID_EMPTY"
+						value="<spring:message code="SecSystemError.SYSTEM_ID_EMPTY" />" />
+					<input type=hidden id="SecSystemError-SYSTEM_ID_MIN_LENGTH"
+						value="<spring:message code="SecSystemError.SYSTEM_ID_MIN_LENGTH" />" />
+					<input type=hidden id="SecSystemError-NAME_EMPTY"
+						value="<spring:message code="SecSystemError.NAME_EMPTY" />" />
+					<input type=hidden id="SecSystemError-NAME_MIN_LENGTH"
+						value="<spring:message code="SecSystemError.NAME_MIN_LENGTH" />" />
+						
 					<form:form id="secSystemForm" modelAttribute="secSystem">
+
 						<div class="ui-grid-solo">
 							<div class="ui-block-a grid-form-block">
 								<form:label path="systemId" class="label-form">
 									<spring:message code="SecSystem.form.label.systemId" />
 								</form:label>
 								<form:input path="systemId" type="text" aria-invalid="true"
-									required="required" />
+									onblur="ctrl.val.systemId()" />
 								<p class="help-block"></p>
 							</div>
 							<div class="ui-block-a grid-form-block">
 								<form:label path="systemId" class="label-form">
 									<spring:message code="SecSystem.form.label.name" />
 								</form:label>
-								<form:input path="name" />
+								<form:input path="name" onblur="ctrl.val.name()" />
 							</div>
 							<div class="ui-block-a grid-form-block">
 								<form:label path="description">
@@ -123,12 +134,12 @@
 								</button>
 								<button id="form-button-insert" type="button"
 									class="ui-btn ui-corner-all ui-shadow ui-btn-inline float-right"
-									onclick="ctrl.insert()">
+									onmouseover="ctrl.val.validateForm()" onclick="ctrl.insert()">
 									<spring:message code="SecSystem.form.button.insert" />
 								</button>
 								<button id="form-button-update" type="button"
 									class="ui-btn ui-corner-all ui-shadow ui-btn-inline float-right"
-									onclick="ctrl.update()">
+									onclick="ctrl.update()" onmouseover="ctrl.val.validateForm()">
 									<spring:message code="SecSystem.form.button.update" />
 								</button>
 								<button id="form-button-delete" type="button"

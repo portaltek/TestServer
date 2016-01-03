@@ -203,9 +203,18 @@ body, input, select, textarea, button, .ui-btn {
 .error {
 	color: red;
 }
+input.error {
+    border: 1px solid red;
+    
+}
 
 .success {
 	color: green;
+}
+.notifyjs-corner {
+    z-index: 2000 !important;
+    max-width: 25em !important;
+
 }
 
 @media only screen and (min-width: 35em) {
@@ -223,4 +232,13 @@ body, input, select, textarea, button, .ui-btn {
 		padding-left: 2px;
 		padding-right: 2px;
 	}
+	.notifyjs-corner {
+		max-width: 60em !important;
+	}
 }
+
+
+
+/*
+notifyjs-bootstrap-base notifyjs-bootstrap-error
+*/
