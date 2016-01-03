@@ -6,6 +6,7 @@
 <c:set var="img" value="${ctx}/resources/img" />
 <c:set var="lib" value="${ctx}/resources/lib" />
 
+<link href="${lib}/jq-ui/1.11.4/jquery-ui.min.css" rel="stylesheet" />
 <link href="${lib}/jqm/1.4.5/jquery.mobile.css" rel="stylesheet" />
 <link href="${lib}/fa/css/font-awesome.min.css" rel="stylesheet" />
 <link href="${css}/buttons.css" rel="stylesheet" />
@@ -13,7 +14,9 @@
 <link href="${css}/icons.css" rel="stylesheet" />
 <link href="${css}/default.css" rel="stylesheet" />
 
+
 <script src="${lib}/jq/1.10.2/jquery.js"></script>
+<script src="${lib}/jq-ui/1.11.4/jquery-ui.min.js"></script>
 <script src="${lib}/jqm/1.4.5/jquery.mobile.js"></script>
 <script src="${lib}/angular/angular.js"></script>
 <script src="${js}/default.js"></script>

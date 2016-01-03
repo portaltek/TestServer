@@ -64,6 +64,15 @@ ui-panel-inner ui-first-child {
 	text-align: center;
 }
 
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.float-right {
+	float: right;
+}
+
 .display-inline-block {
 	display: inline !important;
 }
@@ -132,7 +141,6 @@ body, input, select, textarea, button, .ui-btn {
 
 .searchFormDiv {
 	margin: 0 auto !important;
-	
 }
 
 .search {
@@ -143,23 +151,76 @@ body, input, select, textarea, button, .ui-btn {
 	display: block !important;
 	z-index: 1000 !important;
 }
+
 .insert {
-    position: absolute;
-    float: left;
-    left: 0.3em;
-    top: 2.75em;
-    display: block !important;
-    z-index: 1000 !important;
+	position: absolute;
+	float: left;
+	left: 0.3em;
+	top: 2.75em;
+	display: block !important;
+	z-index: 1000 !important;
+}
+
+.icon-small {
+	width: 1em;
+	height: 1em;
+	display: block;
 }
 
 .search-left {
-
-    
+	
 }
 
-/*
-div.ui-input-text {
-	width: 80% !important;
-	display: inline-block !important;
+.help-block ul li {
+	text-decoration: none;
+	text-shadow: none !important;
 }
-*/
+
+.help-block {
+	display: none;
+	position: relative;
+	top: -0.5em;
+	width: 100%;
+	color: #D90000;
+	font-weight: bolder;
+	font-size: 90%;
+	z-index: 1000;
+	text-decoration: none;
+	/*
+	#D90000
+	width: 250px;
+	border: 1px solid white;
+	box-shadow: 0 0 7px black;
+    border-radius: 2px;
+    background: none;
+	*/
+}
+
+.warning {
+	color: orange;
+}
+
+.error {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+
+@media only screen and (min-width: 35em) {
+	input {
+		/*
+		background-color: lightblue !important;
+		*/
+		
+	}
+	.dialog {
+		min-width: 34em;
+		width: 100%;
+	}
+	.grid-form-block {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+}

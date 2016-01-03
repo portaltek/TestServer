@@ -63,7 +63,7 @@ public abstract class JpaHibernateSecDao<E, ID> {
 	}
 
 	public void delete(E e) throws Exception {
-		em.remove(e);
+		em.remove(em.merge(e));
 	}
 
 	public E findById(ID id) {

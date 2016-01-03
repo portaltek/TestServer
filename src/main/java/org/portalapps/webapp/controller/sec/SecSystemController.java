@@ -18,6 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,12 +34,37 @@ public class SecSystemController extends AbstractSecController {
 	@ModelAttribute("secSystem")
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView main(ModelMap m) {
-//		m.put("title", "Spring Security Custom Login Form");
-//		m.put("message", "This is welcome page!!!");
-//		m.put("list", dao.findAll());
+		// m.put("title", "Spring Security Custom Login Form");
+		// m.put("message", "This is welcome page!!!");
+		// m.put("list", dao.findAll());
 
 		// return ;
 		return new ModelAndView("mantto/secSystem/main", "secSystem", new SecSystem());
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<String> findAll() {
+		JSONObject json = new JSONObject();
+		List<SecSystem> list = dao.findAll();
+
+		if (list.isEmpty()) {
+			return new ResponseEntity<String>(json.toString(), HttpStatus.NO_CONTENT);
+		}
+
+		json.put("LIST", list);
+		return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/findId", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<String> findId(@ModelAttribute("secSystem") SecSystem s, @RequestParam String id,
+			Locale locale) throws Exception {
+		JSONObject json = new JSONObject();
+		s = dao.findById(id);
+
+		json.put("ELEMENT", s);
+		return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
 	}
 
 	@ResponseBody
@@ -64,17 +90,39 @@ public class SecSystemController extends AbstractSecController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<String> findAll() {
-		JSONObject json = new JSONObject();
-		List<SecSystem> list = dao.findAll();
-
-		if (list.isEmpty()) {
-			return new ResponseEntity<String>(json.toString(), HttpStatus.NO_CONTENT);
+	@RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<String> update(@ModelAttribute("secSystem") SecSystem s, Locale locale) throws Exception {
+		AppLog applog = new AppLog(locale);
+		try {
+			dao.update(s); 
+			applog.setI18n(SecSystemMsg.RECORD_UPDATED).setLogMsg(s.toString());
+			log.info(applog); // 4
+		} catch (SystemException e) {
+			applog.setException(e).setLogMsg(s.toString());
+			log.warn(applog);
+		} catch (Exception e) {
+			applog.setException(SystemException.wrap(e)).setLogMsg(s.toString());
+			log.error(applog);
 		}
-
-		json.put("LIST", list);
-		return new ResponseEntity<String>(json.toString(), HttpStatus.OK);
+		return new ResponseEntity<String>(applog.getJson().toString(), HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json")
+	public ResponseEntity<String> delete(@ModelAttribute("secSystem") SecSystem s, Locale locale) throws Exception {
+		AppLog applog = new AppLog(locale);
+		try {
+			dao.delete(s); 
+			applog.setI18n(SecSystemMsg.RECORD_DELETED).setLogMsg(s.toString());
+			log.info(applog); // 4
+		} catch (SystemException e) {
+			applog.setException(e).setLogMsg(s.toString());
+			log.warn(applog);
+		} catch (Exception e) {
+			applog.setException(SystemException.wrap(e)).setLogMsg(s.toString());
+			log.error(applog);
+		}
+		return new ResponseEntity<String>(applog.getJson().toString(), HttpStatus.OK);
 	}
 
 }
