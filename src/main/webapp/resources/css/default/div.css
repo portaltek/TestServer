@@ -203,18 +203,36 @@ body, input, select, textarea, button, .ui-btn {
 .error {
 	color: red;
 }
+
 input.error {
-    border: 1px solid red;
-    
+	border: 1px solid red;
 }
 
 .success {
 	color: green;
 }
-.notifyjs-corner {
-    z-index: 2000 !important;
-    max-width: 25em !important;
 
+.notifyjs-corner {
+	z-index: 2000 !important;
+	max-width: 20em !important;
+}
+
+.notifyjs-bootstrap-base {
+	white-space: normal !important;
+}
+
+.ui-input-text .notifyjs-bootstrap-base {
+    min-width: 12em !important;
+    width: 80%;
+}
+
+.menu-panel{
+	z-index: 10000;
+}
+
+.options-panel{
+	z-index: 10000;
+	
 }
 
 @media only screen and (min-width: 35em) {
@@ -222,7 +240,6 @@ input.error {
 		/*
 		background-color: lightblue !important;
 		*/
-		
 	}
 	.dialog {
 		min-width: 34em;
@@ -233,11 +250,14 @@ input.error {
 		padding-right: 2px;
 	}
 	.notifyjs-corner {
-		max-width: 60em !important;
+		max-width: 70em !important;
+	}
+	.ui-input-text .notifyjs-bootstrap-base {
+		max-width: 29em !important;
+		min-width: 12em !important;
+		width: 200% !important;
 	}
 }
-
-
 
 /*
 notifyjs-bootstrap-base notifyjs-bootstrap-error

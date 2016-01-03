@@ -30,7 +30,6 @@
 <body>
 	<div data-role="page" id="defaultPage">
 		<tiles:insertAttribute name="mantto.header" />
-		asdf
 		<div role="main" class="ui-content">
 			<tiles:insertAttribute name="mantto.body" />
 		</div>

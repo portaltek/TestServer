@@ -134,7 +134,7 @@ function SecSystemValidation() {
 		var msg = "", value = this.entity.systemId.val();
 		this.entity.systemId.removeClass("error");
 		if (value === "") {
-			msg += $("#SecSystemError-SYSTEM_ID_EMPTY").val()+"\n";
+			msg +=$("#SecSystemError-SYSTEM_ID_EMPTY").val()+"\n";
 			this.entity.systemId.addClass("error");
 			this.estate = false;
 		}
@@ -175,6 +175,7 @@ function SecSystemValidation() {
 		this.systemId("FORM");
 		this.name("FORM");
 		$.notify(this.msgList, "error");
+		$(".notifyjs-container").css("white-space", "normal");
 		return this.estate;
 	}
 }

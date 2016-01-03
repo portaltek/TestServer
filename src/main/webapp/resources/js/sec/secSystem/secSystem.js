@@ -1,24 +1,13 @@
 var secSystemTable = new SecSystemTable();
 var tablePagination, ctrl;
 $(function() {
-	// $("input,select,textarea").jqBootstrapValidation({
-	// preventSubmit : true,
-	// submitError : function($form, event, errors) {
-	// // Here I do nothing, but you could do something like display
-	// // the error messages to the user, log, etc.
-	// },
-	// submitSuccess : function($form, event) {
-	// // alert("OK");
-	// // event.preventDefault();
-	// },
-	// filter : function() {
-	// return $(this).is(":visible");
-	// }
-	// });
+	$.notify.defaults({
+		clickToHide : true,
+		autoHide : false,
+		autoHideDelay : 10000,
+	})
+	
 
-	// $("#systemId").val("asd");
-	// $("#name").val("asd");
-	// $("#description").val("asd");
 	var tableSelect = $("#secSystemTable");
 	var pager = $("#secSystemTable-pager");
 	tablePagination = new TablePagination(tableSelect, pager);

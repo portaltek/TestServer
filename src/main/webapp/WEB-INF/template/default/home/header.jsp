@@ -9,20 +9,20 @@
 <sec:authentication var="menuList" property="principal.urlList"
 	htmlEscape="false" />
 <div data-role="panel" id="menu" data-display="overlay"
-	data-inset="false" data-position="left">
+	class="menu-panel" data-inset="false" data-position="left">
 	<ul data-role="listview" data-inset="false" data-shadow="false">
 		<li data-role="listview" data-inset="false" data-icon="home"><a
 			href="${ctx}/home">Home</a></li>
 
 		<c:forEach items="${menuList}" var="m">
-			<li data-role="listview" data-iconpos="right" >
-				<a href="${ctx}${m}" data-inset="false">${ctx}${m}</a>
+			<li data-role="listview" data-iconpos="right"><a
+				href="${ctx}${m}" data-inset="false">${ctx}${m}</a>
 		</c:forEach>
 	</ul>
 </div>
 
 <div data-role="panel" id="options" data-display="overlay"
-	data-position="right" data-inset="false">
+	class="options-panel" data-position="right" data-inset="false">
 	<ul data-role="listview" data-inset="false" data-shadow="false">
 		<li data-role="listview" data-inset="false" data-icon="user"><a
 			href="">Usuario</a></li>
@@ -34,8 +34,7 @@
 
 
 	<!-- csrt support -->
-	<form action="${logoutUrl}" method="post" 
-	 id="logoutForm">
+	<form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 	</form>
@@ -46,8 +45,8 @@
 
 
 <div data-role="header">
-    <input type="hidden" id="ctx" value="${ctx}" />
-	<a href="#menu" onmouseover="clickOnMouseOver(this);"
+	<input type="hidden" id="ctx" value="${ctx}" /> <a href="#menu"
+		onmouseover="clickOnMouseOver(this);"
 		class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ">Menu</a>
 
 	<h1>Title : WEBAPP: ${ctx}</h1>
